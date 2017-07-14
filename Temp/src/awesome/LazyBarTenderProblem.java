@@ -23,7 +23,7 @@ public class LazyBarTenderProblem
 		}
 		for (Integer integer : maxDrinksArray) 
 		{
-			System.out.println(integer);
+			
 		}
 	}
 	public static void main(String[] args) 
