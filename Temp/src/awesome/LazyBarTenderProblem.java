@@ -11,6 +11,7 @@ public class LazyBarTenderProblem
 {
 	static char maxDrinksCust='a';
 	static	ArrayList<Integer> leastDrinksArray=new ArrayList<Integer>();
+	static HashMap<Integer,ArrayList<Character>> map2=new HashMap<Integer, ArrayList<Character>>();
 	private static void findLeastDrinksToBeSold(HashMap<Character, ArrayList<Integer>> map) 
 	{
 		HashMap<Integer,ArrayList<Character>> map1= new HashMap<Integer, ArrayList<Character>>();
@@ -66,7 +67,7 @@ public class LazyBarTenderProblem
 			}
 		 Set<Entry<Integer, ArrayList<Character>>> entrySet2 = map1.entrySet();
 		 	
-		 //System.out.println(map1);
+		 System.out.println(map1);
 		 int len=0;
 		 
 		 for (Entry<Integer, ArrayList<Character>> entry : entrySet2) 
@@ -76,19 +77,21 @@ public class LazyBarTenderProblem
 				 len=entry.getValue().size();
 			 }
 		 }
-		map1=getMaxLenValues(len,map,map1);
-		for (Entry<Integer, ArrayList<Character>> entry : entrySet2) 
+		getMaxLenValues(len,map,map1);
+		 Set<Entry<Integer, ArrayList<Character>>> entrySet3 = map2.entrySet();
+		for (Entry<Integer, ArrayList<Character>> entry : entrySet3) 
 		 {
 			 if (entry.getValue().size()==0)
 			 {
 				 map1.remove(entry.getKey());
 			 }
 		 }
-		Set<Entry<Integer, ArrayList<Character>>> entrySet3 = map1.entrySet();
+		Set<Entry<Integer, ArrayList<Character>>> entrySet4 = map2.entrySet();
 		System.out.println("The Least required number of Drinks required are:");
-		for (Entry<Integer, ArrayList<Character>> entry : entrySet3) 
+		System.out.print(map2+"-->");
+		for (Entry<Integer, ArrayList<Character>> entry : entrySet4) 
 		{
-			System.out.println(entry.getKey());
+			System.out.print(entry.getKey()+" ");
 		}
 	}
 	private static HashMap<Integer, ArrayList<Character>> getMaxLenValues(int len,HashMap<Character, ArrayList<Integer>> map, HashMap<Integer, ArrayList<Character>> map1) 
@@ -107,11 +110,11 @@ public class LazyBarTenderProblem
 	    			break;
 			 }
 		 }
-		 HashMap<Integer,ArrayList<Character>> map2=new HashMap<Integer, ArrayList<Character>>();
 		 map2.putAll(map1);
-		 boolean flag=false;
+		 
 		 if (!a1.isEmpty()) {
 			
+			 boolean flag=false;
 			 for (Entry<Integer, ArrayList<Character>> entry : entrySet2) //removal
 			 {
 				 for (Character character : a1)
@@ -124,10 +127,11 @@ public class LazyBarTenderProblem
 							 if (entry.getValue().equals(a1))//contains a1
 							 {
 								 flag=true;
-								 continue;
+								 break;
 							 }
 						}
-						 if (map2.containsKey(entry.getKey())) {
+						 if (map2.containsKey(entry.getKey()))
+						 {
 							 ArrayList<Character> a= new ArrayList<Character>();
 							 a=map2.get(entry.getKey());
 							 a.remove(character);
@@ -137,9 +141,9 @@ public class LazyBarTenderProblem
 				 }
 			 }
 		}
-		 
 		 HashMap<Integer,ArrayList<Character>> map3=new HashMap<Integer, ArrayList<Character>>();
 		 map3.putAll(map2);
+		 
 		 Set<Entry<Integer, ArrayList<Character>>> entrySet = map3.entrySet();
 		 for (Entry<Integer, ArrayList<Character>> entry : entrySet) //removal
 		 {
@@ -148,33 +152,32 @@ public class LazyBarTenderProblem
 				 map2.remove(entry.getKey());
 			 }
 		 }
+		 System.out.println(map2);
 		 getMaxLenValues(--len,map,map2);
-//		 System.out.println(map2);
-		return map2;
+		 return map2;
 	}
-	public static void main(String[] args) 
+	public static void main(String[] args)
 	{
 		HashMap<Character, ArrayList<Integer>> map= new HashMap<Character, ArrayList<Integer>>();
 		ArrayList<Integer> choice1=new ArrayList<Integer>();
-		choice1.add(3);
-		choice1.add(4);
-		choice1.add(6);
+		choice1.add(1);
+		choice1.add(2);
 		ArrayList<Integer> choice2=new ArrayList<Integer>();
-		choice2.add(1);
-		choice2.add(4);
+		choice2.add(5);
 		choice2.add(3);
+		choice2.add(4);
 		ArrayList<Integer> choice3=new ArrayList<Integer>();
-		choice3.add(4);
+		choice3.add(3);
 		choice3.add(2);
-		choice3.add(5);
+		choice3.add(1);
 		ArrayList<Integer> choice4=new ArrayList<Integer>();
-		choice4.add(6);
-		choice4.add(1);
+		choice4.add(2);
 		choice4.add(5);
+		choice4.add(4);
 		ArrayList<Integer> choice5=new ArrayList<Integer>();
-		choice5.add(3);
-		choice5.add(4);
-		choice5.add(1);
+		choice5.add(6);
+//		choice5.add(4);
+//		choice5.add(1);
 		map.put('a', choice1);
 		map.put('b', choice2);
 		map.put('c', choice3);
