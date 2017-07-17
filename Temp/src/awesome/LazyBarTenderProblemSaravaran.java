@@ -15,11 +15,14 @@ public class LazyBarTenderProblemSaravaran {
 		HashMap<Integer, ArrayList<Character>> map1 = new HashMap<Integer, ArrayList<Character>>();
 
 		Set<Entry<Character, ArrayList<Integer>>> entrySet = map.entrySet();
-		for (Entry<Character, ArrayList<Integer>> entry : entrySet) {
+		for (Entry<Character, ArrayList<Integer>> entry : entrySet)
+		{
 			ArrayList<Integer> value = entry.getValue();
-			for (Integer integer : value) {
+			for (Integer integer : value) 
+			{
 				ArrayList<Character> arrayList = map1.get(integer);
-				if (arrayList == null) {
+				if (arrayList == null) 
+				{
 					arrayList = new ArrayList<Character>();
 				}
 				arrayList.add(entry.getKey());
@@ -56,7 +59,6 @@ public class LazyBarTenderProblemSaravaran {
 					if (temCustomers.contains(character)) {
 						temCustomers.remove(character);
 					}
-
 				}
 			}
 		}
