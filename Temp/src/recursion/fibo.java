@@ -1,4 +1,4 @@
-package awesome;
+package recursion;
 
 public class fibo {
 

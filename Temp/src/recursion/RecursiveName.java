@@ -1,6 +1,6 @@
-package awesome;
+package recursion;
 
-public class reverse {
+public class RecursiveName {
 
 	public static void reverse(String name[], int len)
 	{

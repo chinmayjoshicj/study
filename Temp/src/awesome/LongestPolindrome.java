@@ -5,7 +5,7 @@ public class LongestPolindrome {
 	public static void main(String[] args) throws Exception {
 
 		String message = "underqualified";
-		message = "turboventilator";
+		message = "Traveller";
 		char[] charArray = message.toCharArray();
 		String[] result = traverse(charArray, charArray.length - 1, 0, new String[] {"", ""});
 		System.out.println(result[0]+result[1]);
