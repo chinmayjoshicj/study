@@ -7,7 +7,7 @@ public class TowerOfHanoi {
 		char s = 's';
 		char e = 'e';
 		char d = 'd';
-		int n=4;
+		int n=3;
 		
 		towerOfHanoiSolution(s,d,e,n);
 	}
