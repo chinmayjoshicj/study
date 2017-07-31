@@ -1,13 +1,11 @@
 package dynamicProgramming;
 
-import javax.xml.bind.ParseConversionEvent;
-
 public class LongestFirstAndLastSumEqualBruteForce 
 {
 	public static void main(String[] args) 
 	{
-		String str1="142124";
-		String str="9430723";
+		String str="142124";
+		str="9430723";
 		int maxLen=0;
 		
 		for (int i = 0; i < str.length(); i++) 
