@@ -1,31 +1,58 @@
 package awesome;
 
+import java.util.Scanner;
+
 public class RainWaterTrappingProblem {
 
 	static int trap[][] = null;
 	static int count = 0;
 
-	public static void main(String[] args) {
-		int arr[] = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
-		/* int arr[]={3,0,0,2,0,4}; */
-		/* int arr[]={0,0,0,0,0,0,0}; */
+	public static void main(String[] args) 
+	{
+		/*int arr[] = { 0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1 };
+		 int arr[]={3,0,0,2,0,4}; 
+		 int arr[]={0,0,0,0,0,0,0}; 
 		int max = findMax(arr);
 		trap = new int[max][arr.length];
 		buildTrap(arr);
 
 		printTrap(max, arr.length);
 		System.out.println();
-		System.out.println("count " + calculateTrappedWater(arr));
+		System.out.println("count " + calculateTrappedWater(arr));*/
+		Scanner sc = new Scanner(System.in);
+		//System.out.println("Enter no of Eggs");
+		int inputs= Integer.parseInt(sc.nextLine());
+		
+		for (int i = 0; i < inputs; i++)
+		{
+			int n=Integer.parseInt(sc.nextLine());
+			
+			int arr[]=new int[n];
+			String temp=sc.nextLine();
+			String b[]=temp.split("\\s");
+			for (int j = 0; j < b.length; j++) 
+			{
+				arr[j]=Integer.parseInt(b[j]);
+			}
+			int max = findMax(arr);
+			trap = new int[max][arr.length];
+			buildTrap(arr);
+
+			//printTrap(max, arr.length);
+			//System.out.println();
+			System.out.println("count " + calculateTrappedWater(arr));
+				
+		}
 	}
 
-	private static void printTrap(int rows, int columns) {
+	/*private static void printTrap(int rows, int columns) {
 		for (int i = 0; i < rows; i++) {
 			for (int j = 0; j < columns; j++) {
 				System.out.print(trap[i][j] + " ");
 			}
 			System.out.println();
 		}
-	}
+	}*/
 
 	private static void buildTrap(int[] arr) {
 		for (int j = 0; j < arr.length; j++) {
@@ -82,7 +109,7 @@ public class RainWaterTrappingProblem {
 			}
 		}
 		if (ones >= 2) {
-			 System.out.println("row "+row+"column "+j+" and "+row+" "+i+"-->"+row+" "+column);
+			 //System.out.println("row "+row+"column "+j+" and "+row+" "+i+"-->"+row+" "+column);
 			return 1;
 		}
 		return 0;
