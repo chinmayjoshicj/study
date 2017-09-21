@@ -1,4 +1,4 @@
-package companySpecific;
+package ConpanySpecific;
 
 import java.util.Scanner;
 
