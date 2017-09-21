@@ -3,28 +3,47 @@ package threads;
 /*
  * This program is used to demonstrate using synchronization with threads
  */
-public class Synchronization {
-	
+public class Synchronization 
+{
 	    //define a class variable called counter
 	     static int counter = 1;
 	    /**
 	     * @param args the command line arguments
 	     */
-	    public static void main(String[] args)
-	    {
+	   public static void main(String[] args) throws InterruptedException
+	   {
+		    /* Example of locking using a synchronized method */
+		    
 	        //use lambda notation for the runnable method 
-	        Runnable r = () -> 
-	        {
+		   
+		   
+	        /*Runnable r = () -> {
 	            System.out.println("ID value: "+getID());
 	        };
 	        Thread one = new Thread(r,"one");
 	        one.start();
+	        
 	        Thread two = new Thread(r,"two");
-	        two.start(); 
-	    }
-	    public static int getID()
-	    {
-	        return counter++;
-	    }  
-	}
+	        two.start(); */
+	
+	/*  Example of locking using an object */
+	    //use lambda notation for the runnable method 
+	
+	        Runnable r2 = () -> 
+	        {
+	            ID id = new ID();
+	            System.out.println("ID value: "+id.getID());
+	        };
+	        Thread one = new Thread(r2,"one");   
+	        one.start();
+	        Thread two = new Thread(r2,"two");
+	        two.start();     
+	   }
+
+    public static synchronized int getID()
+    {
+        return counter++;
+    }
+    
+}
 
