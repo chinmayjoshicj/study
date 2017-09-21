@@ -1,26 +1,26 @@
-package ConpanySpecific;
+package companySpecific;
 
 import java.util.Scanner;
 
 public class SpellTheNumber {
-	public static void main(String[] args) 
-	{
+
+	public static void main(String[] args) {
 		String number[];
-		Scanner sc= new Scanner(System.in);
-		int inputs=Integer.parseInt(sc.nextLine());
-		number=new String[inputs];
+		Scanner sc = new Scanner(System.in);
+		int inputs = Integer.parseInt(sc.nextLine());
+		number = new String[inputs];
 		for (int i = 0; i < number.length; i++) {
-			number[i]=sc.nextLine();
-			
+			number[i] = sc.nextLine();
+
 		}
-			for (int i = 0; i < number.length; i++)
-			{
-				printNumber(number[i]);
-				System.out.println();
-			}
+		for (int i = 0; i < number.length; i++) {
+			printNumber(number[i]);
+//		printNumber("913");
+			System.out.println();
+		}
 	}
-	private static void printNumber(String number) 
-	{
+
+	private static void printNumber(String number) {
 		int n = 0;
 		while (number.charAt(n) == '0') {
 			if (number.length() != 1) {
@@ -30,70 +30,57 @@ public class SpellTheNumber {
 				break;
 			}
 		}
-		/*if (number.length() == 6) {
-			readLakhs(number);
-		}*/
+		/*
+		 * if (number.length() == 6) { readLakhs(number); }
+		 */
 		if (number.length() == 5 || number.length() == 4) {
 			readThousand(number);
 		}
-		if (number.length() == 3) 
-		{
+		if (number.length() == 3) {
 			readHundred(number);
 		}
-		if (number.length()==2)
-		{
+		if (number.length() == 2) {
 			readTy(number.charAt(0), number.charAt(1));
-			if (number.charAt(1)!='0' && number.charAt(0)!='1')
-			{
+			if (number.charAt(1) != '0' && number.charAt(0) != '1') {
 				readnumber(number.charAt(1));
 			}
 		}
-		if (number.length()==1)
-		{
+		if (number.length() == 1) {
 			readnumber(number.charAt(0));
 		}
 	}
+
 	private static void readThousand(String number) {
 		if (number.length() == 4) {
-			for (int i = 0; i < number.length(); i++) 
-			{
-				if (i == 0)
-				{
-					//readTy(number.charAt(i), number.charAt(i + 1));
+			for (int i = 0; i < number.length(); i++) {
+				if (i == 0) {
+					// readTy(number.charAt(i), number.charAt(i + 1));
 					readnumber(number.charAt(i));
 					if (number.charAt(i) != '0') {
 						System.out.print("thousand ");
 					}
-					if (number.charAt(i + 1) != '0') 
-					{
-						readHundred(number.substring(i+1,number.length()));
+					if (number.charAt(i + 1) != '0') {
+						readHundred(number.substring(i + 1, number.length()));
 						i++;
-							break;
+						break;
 					}
-					if (number.charAt(i+1)=='0')
-					{
+					if (number.charAt(i + 1) == '0') {
 						i++;
 					}
 					continue;
 				}
-				if (i==1 && number.charAt(i)!='0')
-				{
+				if (i == 1 && number.charAt(i) != '0') {
 					readHundred(number.substring(i));
 					break;
 				}
-				if (i == 2)
-				{
-					if (number.charAt(i)=='0')
-					{
+				if (i == 2) {
+					if (number.charAt(i) == '0') {
 						break;
 					}
-					//System.out.print("hundred ");
-					if (number.charAt(i+1)=='0')
-					{
+					// System.out.print("hundred ");
+					if (number.charAt(i + 1) == '0') {
 						System.out.print("hundred ");
-					}
-					else
-					{
+					} else {
 						System.out.print("hundred and ");
 					}
 					readTy(number.charAt(i), number.charAt(i + 1));
@@ -129,12 +116,10 @@ public class SpellTheNumber {
 			if (i == 0) {
 				readnumber(number.charAt(i));
 				if (number.charAt(i) != '0') {
-					if (number.charAt(i+1)=='0'&& number.charAt(i+2)=='0')
-					{
+					if (number.charAt(i + 1) == '0'
+							&& number.charAt(i + 2) == '0') {
 						System.out.print("hundred ");
-					}
-					else
-					{
+					} else {
 						System.out.print("hundred and ");
 					}
 					continue;
@@ -143,9 +128,10 @@ public class SpellTheNumber {
 			if (i == 1) {
 				if (number.charAt(i) != '0') {
 					readTy(number.charAt(i), number.charAt(i + 1));
-					if (number.charAt(i + 1) != '0' || number.charAt(i + 1) != '1') {
+					if (number.charAt(i + 1) != '0'
+							&& number.charAt(i) != '1') {
 						readnumber(number.charAt(i + 1));
-						
+
 					}
 					i++;
 					break;
@@ -158,40 +144,18 @@ public class SpellTheNumber {
 		}
 	}
 
-	/*private static void readLakhs(String number) {
-		for (int i = 0; i < number.length(); i++) {
-			if (i == 0) {
-				if (number.charAt(i) != '0') {
-					readnumber(number.charAt(i));
-					System.out.print("lakhs ");
-					continue;
-				}
-			}
-			if (i == 1) {
-				readTy(number.charAt(i), number.charAt(i + 1));
-				if (number.charAt(i + 1) != '0') {
-					readnumber(number.charAt(i + 1));
-				}
-				if (number.charAt(i) != '0') {
-					System.out.print("thousand ");
-				}
-				i++;
-				continue;
-			}
-			if (i == 3) {
-				readnumber(number.charAt(i));
-				if (number.charAt(i) != '0') {
-					System.out.print("hundred ");
-				}
-				continue;
-			}
-			if (i == 4) {
-				readTy(number.charAt(i), number.charAt(i + 1));
-				readnumber(number.charAt(i + 1));
-				continue;
-			}
-		}
-	}*/
+	/*
+	 * private static void readLakhs(String number) { for (int i = 0; i <
+	 * number.length(); i++) { if (i == 0) { if (number.charAt(i) != '0') {
+	 * readnumber(number.charAt(i)); System.out.print("lakhs "); continue; } }
+	 * if (i == 1) { readTy(number.charAt(i), number.charAt(i + 1)); if
+	 * (number.charAt(i + 1) != '0') { readnumber(number.charAt(i + 1)); } if
+	 * (number.charAt(i) != '0') { System.out.print("thousand "); } i++;
+	 * continue; } if (i == 3) { readnumber(number.charAt(i)); if
+	 * (number.charAt(i) != '0') { System.out.print("hundred "); } continue; }
+	 * if (i == 4) { readTy(number.charAt(i), number.charAt(i + 1));
+	 * readnumber(number.charAt(i + 1)); continue; } } }
+	 */
 
 	private static void readTy(char a, char i) {
 		if (a == '1') {
