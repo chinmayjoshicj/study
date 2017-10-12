@@ -1,4 +1,4 @@
-package awesome;
+package stringManupulations;
 
 import java.util.Scanner;
 
@@ -11,7 +11,7 @@ public class RepeatedCharacterPresentFirst {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		//String a = sc.nextLine();
-		 String a="chinmayjoshi";
+		 String a="geekforgeeks";
 
 		/*for (int i = 0; i < a.length(); i++) {
 			for (int j = 0; j < a.length(); j++) {
@@ -35,25 +35,25 @@ public class RepeatedCharacterPresentFirst {
 		int i = 0;
 		for (i = 0; i < a.length(); i++) 
 		{
-			System.out.println(i);
+			//System.out.println(i);
 			pos1=(int)a.charAt(i);
 			if (hash[pos1]==0)
 			{
 				hash[pos1]++;
-				System.out.println(i);
+				//System.out.println(i);
 				pos[i]=pos1;
 			}
 			else if (hash[pos1]==1)
 			{
 				hash[pos1]++;
 			}
-			System.out.println(i);
+			//System.out.println(i);
 		}
 		for (i = 0; i < MAX_CHAR; i++) 
 		{
-			if (hash[i]==2)
+			if (hash[pos[i]]==2)
 			{
-				System.out.println(a.charAt(pos[i]));
+				System.out.println((char)pos[i]);
 				break;
 			}
 		}
