@@ -5,15 +5,12 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Scanner;
-
-
 /*Remaining
  * 3
 abcdde
 baccd
 eeabg
-Output-2*/
-
+Output 2*/
 /*
  * John has discovered various rocks. Each rock is composed of various elements,
  *  and each element is represented by a lower-case Latin letter from 'a' to 'z'. 

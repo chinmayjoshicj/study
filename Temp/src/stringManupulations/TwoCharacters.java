@@ -13,8 +13,6 @@ For example, if  abaacdabd and you delete the character a, then the string becom
 Given , convert it to the longest possible string . 
 Then print the length of string  on a new line; if no string  can be formed from , print  instead.*/
 
-
-
 //Incomplete
 
 public class TwoCharacters 
