@@ -15,8 +15,7 @@ import java.util.Scanner;
 /*YES 1
 YES 9
 YES 99
-NO
-NO
+NONO
 NO
 NO*/
 

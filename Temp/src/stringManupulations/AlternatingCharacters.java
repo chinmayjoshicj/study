@@ -29,8 +29,8 @@ public class AlternatingCharacters {
 		int i = 0;
 		int count = 0;
 		a = s.charAt(0);
-		int k=0;
-		StringBuffer st=new StringBuffer(s);
+		int k = 0;
+		StringBuffer st = new StringBuffer(s);
 		while (i != s.length())// to get 2 characters
 		{
 			if (s.charAt(i) != a) {
@@ -43,31 +43,22 @@ public class AlternatingCharacters {
 		{
 			return s.length() - 1;
 		}
-		for (int j = 1; j < st.length(); j++) 
-		{
-			if (j % 2 == 0) 
-			{
-				if (st.charAt(j)==b)
-				{
-					st=st.deleteCharAt(j);
+		for (int j = 1; j < st.length(); j++) {
+			if (j % 2 == 0) {
+				if (st.charAt(j) == b) {
+					st = st.deleteCharAt(j);
 					count++;
-					j=j-1;
+					j = j - 1;
 				}
-			} 
-			else
-			{
-				if (st.charAt(j)==a)
-				{
-					st=st.deleteCharAt(j);
+			} else {
+				if (st.charAt(j) == a) {
+					st = st.deleteCharAt(j);
 					count++;
-					j=j-1;
+					j = j - 1;
 				}
 			}
 		}
-		if (count==s.length()-1)
-		{
-			return count-1;
-		}
+		
 		return count;
 	}
 
