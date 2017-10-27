@@ -1,9 +1,7 @@
 package stringManupulations;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedHashSet;
 
 /*String  always consists of two distinct alternating characters.
 For example, if string 's two distinct characters are x and y, then t could be xyxyx or yxyxy but not xxyy or xyyx.
