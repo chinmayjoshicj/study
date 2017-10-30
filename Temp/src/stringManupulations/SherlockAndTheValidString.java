@@ -15,6 +15,11 @@ Given , can you determine if it's valid or not? If it's valid, print YES on a ne
 */
 
 /*Incomplete*/
+
+/*abcccc
+ * 
+Failing fot this
+*/
 public class SherlockAndTheValidString
 {
 	static String isValid(String s)
@@ -34,7 +39,7 @@ public class SherlockAndTheValidString
 			HashMap<Integer, Integer> h1=new HashMap<>();
 			for (Map.Entry<Character, Integer> entry : h.entrySet())
 			{
-				if (h1.containsKey(entry.getValue())) 
+				if (h1.containsKey(entry.getValue()))
 				{
 					h1.put(entry.getValue(), h1.get(entry.getValue())+1);
 				}
