@@ -1,7 +1,29 @@
 package stringManupulations;
 
 import java.util.Scanner;
-/*Incomplete*/
+/*Incomplete
+ * 
+ * Sample Input 0
+
+4 1
+3943
+Sample Output 0
+
+3993
+Sample Input 1
+
+6 3
+092282
+Sample Output 1
+
+992299
+Sample Input 2
+
+4 1
+0011
+Sample Output 2
+
+-1*/
 public class RichieRich {
 
 	static String richieRich(String s, int n, int k)
