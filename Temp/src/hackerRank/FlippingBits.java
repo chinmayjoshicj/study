@@ -1,9 +1,6 @@
 package hackerRank;
 
-import java.util.Iterator;
 import java.util.Scanner;
-
-import javax.swing.RepaintManager;
 
 /*You will be given a list of 32 bits unsigned integers.
  * You are required to output the list of the unsigned integers you get by flipping bits in its binary representation 
@@ -25,7 +22,6 @@ Take 1 for example, as unsigned 32-bits is 00000000000000000000000000000001 and
 doing the flipping we get 11111111111111111111111111111110 which in turn is 4294967294.
 
  * */
-/*Incomplete*/
 public class FlippingBits {
 
 	public static void main(String[] args) 
@@ -41,7 +37,7 @@ public class FlippingBits {
 
 	private static void logicWork(String number1) 
 	{
-        String number = Integer.toBinaryString(Integer.parseInt(number1));
+        String number = Long.toBinaryString(Long.parseLong(number1));
         /*System.out.println("Binary value: "+number);
         System.out.println("Original value: "+Integer.parseInt(number, 2));*/
 
@@ -63,12 +59,12 @@ public class FlippingBits {
         System.out.println(convertBack(binaryString));
 	}
 
-	private static int convertBack(String binaryString) 
+	private static Long convertBack(String binaryString) 
 	{
-		int total=0;
+		Long total=(long) 0;
 		for (int i = 0; i < binaryString.length(); i++) 
 		{
-			total+=Integer.parseInt(binaryString.charAt(i)+"")*Math.pow(2, Integer.parseInt(binaryString.charAt(i)+""));
+			total= ((total)+(Long.parseLong(binaryString.charAt(i)+"")*(long)Math.pow(2, binaryString.length()-i-1)));//-1 becoz 2^31 we will take
 		}
 		return total;
 	}
