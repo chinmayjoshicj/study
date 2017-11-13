@@ -30,8 +30,8 @@ public class StringPermutations
 	{
 		char temp;
 		char[] charArray=s.toCharArray();
-		System.out.println(s);
-		System.out.println("Swapping "+charArray[left]+" and "+charArray[i]);
+		//System.out.println(s);
+		//System.out.println("Swapping "+charArray[left]+" and "+charArray[i]);
 		temp=charArray[left];
 		charArray[left]=charArray[i];
 		charArray[i]=temp;
