@@ -1,7 +1,7 @@
 package awesome;
 
 import java.util.Scanner;
-
+/*Time Out*/
 public class PrimeGenerator {
 
 	static boolean prime[]=null;

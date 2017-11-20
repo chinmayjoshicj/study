@@ -1,7 +1,7 @@
 package hackerEarth;
 
 import java.util.Scanner;
-
+/*Incomplete*/
 public class TwoGroups {
 
 	public static void main(String[] args) {
