@@ -13,6 +13,7 @@ public class TheBlacklist {
 		int k=sc.nextInt();
 		int arr[][]=new int[k][n];
 		int finalArr[][]=new int[k][n];
+		int rowSum[][]=new int[n][k];
 		for (int i = 0; i < k; i++) 
 		{
 			for (int j = 0; j < n; j++) 
@@ -28,7 +29,7 @@ public class TheBlacklist {
 			}
 			System.out.println();
 		}*/
-		for (int i = 0; i < k; i++) 
+		/*for (int i = 0; i < k; i++) 
 		{
 			for (int j = 0; j < n; j++) 
 			{
@@ -39,8 +40,8 @@ public class TheBlacklist {
 				else
 					finalArr[i][j]=Math.min(finalArr[i-1][j], arr[i][j]);
 			}
-		}
-		System.out.println("Final array is:");
+		}*/
+		/*System.out.println("Final array is:");
 		for (int i = 0; i < k; i++) 
 		{
 			for (int j = 0; j < n; j++) 
@@ -48,13 +49,38 @@ public class TheBlacklist {
 				System.out.print(finalArr[i][j]+" ");
 			}
 			System.out.println();
-		}
-		int leastCharge=0;
-		for (int i = 0; i < n; i++) 
+		}*/
+		int deductRow=0;
+		int row=0;
+		int column=0;
+		System.out.println("Final array is:");
+		for (int i = 0; i < k; i++) 
 		{
-			leastCharge+=finalArr[k-1][i];
+			/*calculate(arr,rowSum,i);*/
 		}
-		System.out.println(leastCharge);
+		
+		int leastCharge=0;
+		for (int i = 0; i < k; i++) 
+		{
+			for (int j = 0; j < n; j++) 
+			{
+				System.out.print(rowSum[i][j]+" ");
+			}
+			System.out.println();
+		}
+	}
+
+	private static int calculate(int[][] arr, int[] rowSum, int j2) 
+	{
+		return j2;
+		/*for (int i = 0; i < n; i++) 
+		{
+			for (int j = j2; j < rowSum.length; j++) 
+			{
+				rowSum[row][column]+=arr[i][j-deductRow];//saving vertically by adding horizontally
+			}
+			deductRow++;
+		}*/
 	}
 	
 }
