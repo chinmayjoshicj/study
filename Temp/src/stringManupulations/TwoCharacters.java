@@ -17,7 +17,7 @@ public class TwoCharacters
 {
 	public static void main(String[] args)
 	{
-		String s="abaacdabd";
+		String s="abaa	cdabd";
 		perform(s);
 	}
 
@@ -56,7 +56,6 @@ public class TwoCharacters
 	{
 		if (check(list))
 		{
-			
 		}
 		for (Character character : list)
 		{

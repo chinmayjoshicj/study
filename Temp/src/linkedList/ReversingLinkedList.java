@@ -6,19 +6,7 @@ public class ReversingLinkedList
 
 		public void reverse(Node head)
 		{
-			Node curr=head;
-			Node prev=null;
-			Node next=null;
-			
-			while (curr.next!=null) 
-			{
-				next=curr.next;
-				curr.next=prev;
-				prev=curr;
-				curr=next;
-			}
-			curr.next=prev;
-			this.head=curr;
+//			while()
 		}
 		public void createLinkedList(int data) 
 		{

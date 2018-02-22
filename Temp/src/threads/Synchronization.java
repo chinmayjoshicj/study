@@ -40,7 +40,7 @@ public class Synchronization
 	        two.start();     
 	   }
 
-    public static synchronized int getID()
+    public static /*synchronized*/ int getID()
     {
         return counter++;
     }

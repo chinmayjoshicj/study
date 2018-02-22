@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /*
  We have  pairs to check:
-. The substrings  and  are common to both a and b, so we print YES on a new line.
+. The substrings s1 and  s2 are common to both a and b, so we print YES on a new line.
 . Because  and  have no common substrings, we print NO on a new line.
  */
 public class TwoStrings 
