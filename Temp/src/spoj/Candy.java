@@ -61,3 +61,4 @@ public class Candy
 		}
 	}
 }
+/*5 1 1 1 2 5 2 3 4 -1*/
