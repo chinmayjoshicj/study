@@ -44,8 +44,8 @@ public class RansomNote
     		
     		String key=entry.getKey();
     		int count=noteMap.get(key);
-    		/*while(count!=0)
-    		{*/
+    		while(count!=0)
+    		{
     			
 			    if (!magazineMap.containsKey(key))
 			    {
@@ -61,8 +61,8 @@ public class RansomNote
 			    	{
 			    		magazineMap.put(key, magazineMap.get(key)-1);
 			    	}
-			    /*}
-			    count--;*/
+			    }
+			    count--;
     		}
 		}
 		return true;
