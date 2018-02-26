@@ -6,6 +6,9 @@ import java.util.Scanner;
  We have  pairs to check:
 . The substrings s1 and  s2 are common to both a and b, so we print YES on a new line.
 . Because  and  have no common substrings, we print NO on a new line.
+
+
+https://www.hackerrank.com/challenges/two-strings/problem
  */
 public class TwoStrings 
 {
@@ -20,14 +23,16 @@ public class TwoStrings
     }
     public static void main(String[] args) 
     {
-    	Scanner in = new Scanner(System.in);
+    	/*Scanner in = new Scanner(System.in);
         int q = in.nextInt();
         for(int a0 = 0; a0 < q; a0++){
             String s1 = in.next();
             String s2 = in.next();
-            String result = twoStrings(s1, s2);
+            String result = twoStrings("RAM", "RAMAYAN");
             System.out.println(result);
-        }
+        }*/
+        String result = twoStrings("ram", "ramayan");
+        System.out.println(result);
     }
 
 }

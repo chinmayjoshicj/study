@@ -1,6 +1,6 @@
 package crackingCodingInterview;
 
-import java.util.Scanner;
+import java.util.LinkedHashMap;
 
 public class MakingAnagrams {
 
@@ -11,6 +11,34 @@ public class MakingAnagrams {
         String b = in.next();*/
         System.out.println(numberNeeded("abc", "cde"));
 	}
+
+	/*private static int numberNeeded(String first, String second) {
+		String a="abcdefghijklmnopqrstuvwxyz";
+		int count = 0;
+			LinkedHashMap<Character, Integer> map1 = new LinkedHashMap<>();
+			LinkedHashMap<Character, Integer> map2 = new LinkedHashMap<>();
+			
+			for (int i = 0; i < a.length(); i++)
+			{
+				map1.put(a.charAt(i), 0);
+				map2.put(a.charAt(i), 0);
+			}
+			for (int i = 0; i < first.length(); i++)
+			{
+				map1.put(first.charAt(i),map1.get(first.charAt(i))+1);
+			}
+			for (int i = 0; i < second.length(); i++)
+			{
+				map2.put(second.charAt(i),map2.get(second.charAt(i))+1);
+			}
+			
+			for (Character ch : map1.keySet()) 
+			{
+				count+=Math.max(map1.get(ch)-map2.get(ch),map2.get(ch)-map1.get(ch));
+			}
+			
+			return count;
+	} Second Logic*/
 
 	private static int numberNeeded(String a, String b) 
 	{
