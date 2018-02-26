@@ -73,20 +73,28 @@ public class BinaryTreeCheck {
 					return;
 				}
 			}
-			if (root.right == null) {
-				if (root.left == null) {
+			if (root.right == null) 
+			{
+				if (root.left == null) 
+				{
 					return;
-				} else {
-					if (root.data < root.left.data) {
+				} 
+				else
+				{
+					if (root.data < root.left.data) 
+					{
 						check = 1;
 						return;
 					}
 				}
 			}
-			if (root.left == null) {
-				if (root.right == null) {
+			else if (root.left == null) 
+			{
+				if (root.right == null) 
+				{
 					return;
-				} else {
+				} 
+				else {
 					if (root.data > root.right.data) {
 						check = 1;
 						return;
