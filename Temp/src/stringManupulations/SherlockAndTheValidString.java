@@ -18,7 +18,7 @@ Given , can you determine if it's valid or not? If it's valid, print YES on a ne
 
 /*abcccc
  * 
-Failing fot this
+Failing for this
 */
 public class SherlockAndTheValidString
 {

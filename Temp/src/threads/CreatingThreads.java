@@ -23,9 +23,14 @@ public class CreatingThreads {
             }
         };
         //Create a runnable object using lambda notation
-        Runnable r2 = () -> System.out.println("Hello from "
-                + Thread.currentThread().getName()+" USING LAMBDA "
-                + "notation");
+        Runnable r2 = new Runnable() {
+			@Override
+			public void run() {
+				System.out.println("Hello from "
+				        + Thread.currentThread().getName()+" USING LAMBDA "
+				        + "notation");
+			}
+		};
         /*Create and start a thread using the first runnable object
          *This thread is also given a name in the arguments */
         Thread t3 = new Thread(r1, "Thread t1");
