@@ -1,7 +1,5 @@
 package crackingCodingInterview;
 
-import java.util.LinkedHashMap;
-
 public class MakingAnagrams {
 
 	public static void main(String[] args)

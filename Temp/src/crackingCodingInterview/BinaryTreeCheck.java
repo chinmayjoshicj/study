@@ -19,7 +19,9 @@ public class BinaryTreeCheck {
 
 	static TreeNode root;
 	static int check = 0;
-
+	static int min = 0;
+	static int max = 0;
+	
 	public static void main(String[] args) {
 		BinaryTreeCheck tree = new BinaryTreeCheck();
 		tree.root = new TreeNode(4);
@@ -45,9 +47,15 @@ public class BinaryTreeCheck {
 	private static void traverse(TreeNode root) {
 		if (root != null) 
 		{
+			if (root.data>max) {
+				max=root.data;
+			}
+			if (root.data<min) {
+				min=root.data;
+			}
 			if (root.left!=null)
 			{
-					if (root.left.data<root.data) {
+					if (root.left.data<root.data && root.left.data<min) {
 						traverse(root.left);
 					}
 					else
@@ -58,7 +66,7 @@ public class BinaryTreeCheck {
 			}
 			if (root.right!=null)
 			{
-				if (root.right.data>root.data) {
+				if (root.right.data>root.data && root.right.data>max) {
 					traverse(root.right);
 				}
 				else
@@ -68,7 +76,7 @@ public class BinaryTreeCheck {
 				}
 			}
 			if (root.left != null && root.right != null) {
-				if (root.data < root.left.data || root.data > root.right.data) {
+				if (root.data < root.left.data) {
 					check = 1;
 					return;
 				}
