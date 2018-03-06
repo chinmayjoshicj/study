@@ -29,13 +29,13 @@ public class SearchTextMandatory {
 		DocumentBuilder docBuilder = docBuilderFactory.newDocumentBuilder();
 		 List<String> readAllLines = Files.readAllLines(Paths.get("D:\\Sources\\12.5.0.0.0_core_supp_installer\\SOURCE\\FCUBS_14.0.0.0.0\\test.txt"));
 //		 List<String> readAllLines = Files.readAllLines(Paths.get("C:\\Users\\cmjoshi\\Desktop\\path.txt"));
-
 		for (String fileName : readAllLines) {
+			String functionID = "";
 			int count = 0;
 			
 		try {
 			Document doc = docBuilder.parse(new File(fileName));
-
+			//functionID = fileName;
 			// normalize text representation
 			doc.getDocumentElement().normalize();
 //			System.out.println("Root element of the doc is " + doc.getDocumentElement().getChildNodes().item(1).getNodeValue().trim());
@@ -44,9 +44,11 @@ public class SearchTextMandatory {
 			for (int i = 0; i < rootChildren.getLength(); i++) {
 				Node item = rootChildren.item(i);
 				
-				if(item.getNodeType() == Node.ELEMENT_NODE &&item.getNodeName().  equals("FUNCTION_ID")) {
+				if(item.getNodeType() == Node.ELEMENT_NODE &&(item.getNodeName().equals("FUNCTION_ID") ||item.getNodeName().equals("ENTITY_ID"))) {
 //					functionId =  item.getNodeValue();
-					System.out.print(item.getFirstChild().getTextContent()+"\t");
+					functionID = item.getFirstChild().getTextContent().trim();
+					functionID = (functionID== null || functionID.equals("0") || functionID.isEmpty() ) ? fileName:functionID;
+					System.out.print( functionID +"\t");
 				}
 			}
 
@@ -89,7 +91,14 @@ public class SearchTextMandatory {
 				}
 
 			} // end of for loop with s var
-			System.out.print(count);
+			
+			if(functionID.isEmpty() && count == 0) {
+				System.out.print(fileName);
+			} else {
+				System.out.print(count);
+				
+			}
+			
 			System.out.println();
 		} catch (SAXParseException err) {
 			System.out.println("** Parsing error" + ", line " + err.getLineNumber() + ", uri " + err.getSystemId());
