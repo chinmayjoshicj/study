@@ -1,6 +1,10 @@
 package tree;
 
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.Stack;
+
+import stacks.stack;
 
 public class PostOrderIterativeTraversal 
 {
@@ -34,7 +38,7 @@ public class PostOrderIterativeTraversal
 
 	private static void travelIterativePost(Node root) 
 	{
-		Stack<Node> a=new Stack<>();
+		/*Stack<Node> a=new Stack<>();
 		Stack<Node> b=new Stack<>();
 		a.push(root);
 		while(!a.isEmpty())
@@ -49,7 +53,28 @@ public class PostOrderIterativeTraversal
 			{
 				a.push(root.right);
 			}
-		}
+		}*///Using 2 stacks
+		Stack<Node> b=new Stack<>();
+		Node current = root;
+        Deque<Node> stack = new LinkedList<>();
+        while(current != null || !stack.isEmpty()){
+            if(current != null){
+                stack.addFirst(current);
+                current = current.left;
+            }else{
+                Node temp = stack.peek().right;
+                if (temp == null) {
+                    temp = stack.poll();
+                    System.out.print(temp.data + " ");
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.poll();
+                        System.out.print(temp.data + " ");
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
 		while(!b.isEmpty())
 			System.out.println(b.pop().data);
 	}
