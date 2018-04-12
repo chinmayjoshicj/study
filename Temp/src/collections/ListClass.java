@@ -66,11 +66,6 @@ public class ListClass implements List<String>
 
 			void addLast(Object element) :
 				 It appends the element at the end of the list.*/
-
-
-
-
-		  
 		
 	}
 
