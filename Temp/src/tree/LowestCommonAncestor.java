@@ -1,34 +1,68 @@
 package tree;
 
+import java.util.LinkedList;
+
 public class LowestCommonAncestor {
 
 	Node root;
-	int a[]= new int[1000];
-	int b[]= new int[1000];
-	/*int pathLen=0;
-	int pathLen2=0;*/
-	public Node LCA(Node node, int n1, int n2) 
+	LinkedList<Integer> path1=new LinkedList<>();
+	LinkedList<Integer> path2=new LinkedList<>();
+	
+	public void LCA(Node root, int n1, int n2) 
 	{
-		if(root==null)
-			return root;
+		findPath(root,n1,path1);
+		findPath(root,n2,path2);
+		int dist=0;
+		//int com = 0;
 		
-			if (node.data>n1 && node.data>n2) {
-				return LCA(node.left,n1,n2);
+		for (int i = 0; path1.size()>i && path2.size()>i; i++) 
+		{
+			if (path1.get(i).equals(path2.get(i)))
+			{
+				System.out.println("LCA "+ path1.get(i));
 			}
-			if (node.data<n1 && node.data<n2) {
-				return LCA(node.right,n1,n2);
+			for (Integer k:path1)
+			{
+				if (k==path1.get(i))
+				{
+					dist++;
+				}
 			}
-			return node;
-	}
-public void inOrader(Node node){
-		
-		if(node == null){
-			return;
+			for (Integer k:path2)
+			{
+				if (k==path1.get(i))
+				{
+					dist++;
+				}
+			}
+			break;
 		}
-			inOrader(node.left);
-			System.out.println(node.data);
-			inOrader(node.right);
+		System.out.println(dist+1);
 	}
+
+	private boolean findPath(Node root, int n1, LinkedList<Integer> path)
+	{
+		if (root==null)
+		{
+			return false;
+		}
+		path.add(root.data);
+		
+		if (root.data==n1) {
+			return true;
+		}
+		
+		if (root.left!=null && 	findPath(root.left,n1,path)) {
+			return true;
+		}
+		if (root.right!=null && findPath(root.right,n1,path)) {
+			return true;
+		}
+		path.remove(path.size()-1);
+		
+		return false;
+	}
+
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -52,7 +86,7 @@ public void inOrader(Node node){
         b.root.left.right.right = new Node(14);
         
 //        b.inOrader(b.root);
-        System.out.println(b.LCA(b.root,10,14).data);
+        b.LCA(b.root,10,14);
 	}
 
 }

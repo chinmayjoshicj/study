@@ -28,7 +28,6 @@ public class RootToLeafPaths {
 		{
 			Paths(root.right,Len);
 		}
-		
 	}
 public void inOrader(Node node){
 		
