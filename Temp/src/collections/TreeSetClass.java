@@ -1,4 +1,4 @@
-package Collections;
+package collections;
 
 import java.util.Iterator;
 import java.util.TreeSet;
@@ -10,6 +10,8 @@ public class TreeSetClass {
 		/*Contains unique elements only like HashSet.
 		 
 		Access and retrieval times are quiet fast.
+		
+		uses a tree for storage
 		
 		Maintains ASCENDING order.*/
 		

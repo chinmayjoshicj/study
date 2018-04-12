@@ -1,4 +1,4 @@
-package Collections;
+package collections;
 
 import java.util.HashSet;
 import java.util.Iterator;
@@ -10,7 +10,10 @@ public class HashSetClass
 	 *  It inherits the AbstractSet class and implements Set interface.*/
 	
 	/*Objects that you insert in HashSet are NOT GUARANTEED to be INSERTED IN SAME ORDER. Objects are inserted based on their HASHCODE.
-	NULL elements are allowed in HashSet.*/
+	NULL elements are allowed in HashSet.
+	
+	NULL elements are allowed in HashSet.
+	*/
 	
 	public static void main(String[] args)
 	{
