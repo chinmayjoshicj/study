@@ -1,4 +1,4 @@
-package ConpanySpecific;
+package conpanySpecific;
 
 public class SwapBracketsToBalance {
 
