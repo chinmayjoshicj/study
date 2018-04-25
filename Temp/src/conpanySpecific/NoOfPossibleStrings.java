@@ -14,10 +14,7 @@ public class NoOfPossibleStrings {
 
 	private static void permute(String s, int l, int r) {
 		// TODO Auto-generated method stub
-		for (int i = l; i < s.length(); i++) 
-		{
-			
-		}
+		 
 	}
 
 }

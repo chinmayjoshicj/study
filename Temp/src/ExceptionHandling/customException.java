@@ -15,7 +15,6 @@ public class customException {
 	/*A method can declare that it THROWS more than one exception, 
 	in which case the exceptions are declared in a LIST SEPARATED BY COMMAS. 
 	For example, the following method declares that it throws a REMOTEEXCEPTION and an INSUFFICIENTFUNDSEXCEPTION*/
-		
 	
 	public static void main(String[] args) 
 	{
