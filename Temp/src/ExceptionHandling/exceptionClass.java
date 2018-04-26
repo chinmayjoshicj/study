@@ -1,6 +1,21 @@
 package ExceptionHandling;
 
-/*try {
+/*
+Throwable (Root This is  class, not an Interface like others Cloneable,Runnable,Serializable all are Interfaces) . It has 2 CHILD Classes
+
+Exception:  
+1) Most of the times Exception are caused by our program. Say you are reading a file you will get FileNotFoundException
+2) Exception are RECOVERABLE. 
+	Say you are reading a file located at some Location say at Server. If FileNotFoundException Occurs the We can say Please use file from LOCAL Machine in catch BLOCK.
+	So Exceptions are RECOVERABLE.
+
+Error: 
+
+1) Not Caused by our program, normally it is caused by lack of resources. Say OutOfMemoryError.
+
+2) NonRecoverable.
+
+ * try {
 		// block of code to monitor for errors
 		// the code you think can raise an exception
 }
@@ -31,8 +46,45 @@ finally {
 	If a statement in try block raised an exception, 
 	then the rest of the try block doesn’t execute and control passes to the corresponding catch block.
 	After executing catch block, 
-	the control will be transferred to finally block(if present) and then rest program will be executed.*/
+	the control will be transferred to finally block(if present) and then rest program will be executed.
 
+
+Throwable(Root This is  class not an Interface like others Cloneable,Runnable,Serializable all are Interfaces) . It has 2 CHILD Classes
+
+Exception:  
+1) Most of the times Exception are caused by our program. Say you are reading a file you will get FileNotFoundException
+2) Exception are RECOVERABLE. 
+	Say you are reading a file located at some Location say at Server. If FileNotFoundException Occurs the We can say Please use file from LOCAL Machine in catch BLOCK.
+	So Exceptions are RECOVERABLE.
+
+Error: 
+
+1) Not Caused by our program, normally it is caused by lack of resources. Say OutOfMemoryError.
+
+2) NonRecoverable.
+
+
+
+Difference Between Checked and UnCheckedException
+
+
+Checked:
+
+Say we create a writer object to abc.txt file.
+Then will try compile this code.
+Then immediately Compile will say at runtime compiler will say unreported Exception java.io.FileNotFoundException must be caught or declared to be thrown.
+Here Advantage is that at RunTime program will not face any issues.
+
+
+ Unchecked Exception
+ 
+ This compiler will not check.
+ Occurs at RunTime.
+ Say 10/0. This compiler will never.(ArithmaticException)
+ Compulsary it will occur at RunTime.
+ 
+ 
+*/
 public class exceptionClass 
 {
 	public static void main(String[] args) 
