@@ -1,4 +1,4 @@
-package ConpanySpecific;
+package conpanySpecific;
 
 import java.util.ArrayList;
 
