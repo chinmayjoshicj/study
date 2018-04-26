@@ -14,6 +14,8 @@ public class LowestCommonAncestor {
 		findPath(root,n2,path2);
 		int dist=0;
 		//int com = 0;
+		System.out.println(path1);
+		System.err.println(path2);
 		
 		for (int i = 0; path1.size()>i && path2.size()>i; i++) 
 		{

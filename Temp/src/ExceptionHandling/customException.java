@@ -1,7 +1,8 @@
 package ExceptionHandling;
 
+import java.io.IOException;
 
-public class customException {
+public class customException  extends IOException {
 
 	/*If a method does not handle a checked exception, the method must declare it using the throws keyword. 
 	 
@@ -17,13 +18,18 @@ public class customException {
 	For example, the following method declares that it throws a REMOTEEXCEPTION and an INSUFFICIENTFUNDSEXCEPTION*/
 		
 	
-	public static void main(String[] args) 
-	{
+		private static final long serialVersionUID = 4664456874499611218L;
 		
-	}
-	public void withdraw(double amount) throws NullPointerException, 
-    ArrayIndexOutOfBoundsException {
-    // Method implementation
- }
+		private String errorCode="Unknown_Exception";
+		
+		public customException(String message, String errorCode)
+		{
+			super(message);
+			this.errorCode=errorCode;
+		}
+		
+		public String getErrorCode(){
+			return this.errorCode;
+		}
 
-}
+	}

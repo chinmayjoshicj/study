@@ -3,8 +3,11 @@ package collections;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+
+import queue.Queue;
 
 public class ListClass implements List<String>
 {
@@ -42,8 +45,6 @@ public class ListClass implements List<String>
 		  
 		  System.out.println("Example of LinkedList");
 		  System.out.println();
-		  
-		  
 		  
 		  /* 
 	    ArrayList

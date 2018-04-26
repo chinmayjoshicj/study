@@ -20,6 +20,8 @@ public class TreeSetClass {
 		  set.add("Namita");
 		  set.add("Needa");
 		  set.add("Chinmay");  
+		  
+		  
 		  set.add("Chinmay");
 		  //Traversing elements  
 		  Iterator<String> itr=set.iterator();  

@@ -68,9 +68,6 @@ public class MapEqualsHashCode {
 		System.out.println(s1.equals(s2));
 		
 		System.out.println(studentReport.size());//Should ideally print 1 becoz equals method is overridden but printing 2 need to check
-		
 }
 	
-	
-
 }
