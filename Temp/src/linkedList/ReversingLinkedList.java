@@ -2,11 +2,22 @@ package linkedList;
 
 public class ReversingLinkedList 
 {
-	Node head;
+	static Node head;
 
-		public void reverse(Node head)
+		public static void reverse(Node head1)
 		{
-//			while()
+			Node curr=head1;
+			Node next=null;
+			Node prev=null;
+			
+			while (curr!=null) {
+				next=curr.next;
+				curr.next=prev;
+				prev=curr;
+				curr=next;
+			}		
+			head=prev;
+			
 		}
 		public void createLinkedList(int data) 
 		{
@@ -42,12 +53,13 @@ public class ReversingLinkedList
 			c.createLinkedList(1);
 			c.createLinkedList(0);
 						
-			c.traverse(c.head);
+			//c.traverse(c.head);
 			c.reverse(c.head);
 			c.traverse(c.head);
 			
-			Node a=c.recursivelyReverse(c.head,null);
-			c.traverse(c.head);
+			//Node a=c.recursivelyReverse(c.head,null);
+			reverse(c.head);
+			c.traverse(head);
 		}
 	
 }

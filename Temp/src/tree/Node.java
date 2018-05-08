@@ -1,9 +1,10 @@
 package tree;
 public class Node
 {
-	int data;
+	public int data;
 	int hd;
-	Node left,right;
+	public Node left;
+	public Node right;
 	
 	public Node(int item)
 	{

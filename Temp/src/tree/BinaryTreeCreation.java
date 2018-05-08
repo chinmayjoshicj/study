@@ -2,7 +2,8 @@ package tree;
 class Node1
 {
 	int data;
-	Node1 left,right;
+	Node1 left;
+	Node1 right;
 	
 	public Node1(int item)
 	{
