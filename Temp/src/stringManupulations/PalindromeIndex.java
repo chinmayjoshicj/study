@@ -9,13 +9,20 @@ For example, if S="bcbc", we can either remove 'b' at index or 'c' at index .*/
 /*Correct and incorrect as well for the mentioned Case both answers exist*/
 public class PalindromeIndex {
 
-	static int palindromeIndex(String s) {
-		for (int i = 0; i < s.length() / 2; i++) {
-			if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
-				if (s.charAt(i) != s.charAt(s.length() - i - 1)) {
-					if (s.charAt(i + 1) == s.charAt(s.length() - i - 1)) {
+	static int palindromeIndex(String s) 
+	{
+		for (int i = 0; i < s.length() / 2; i++) 
+		{
+			if (s.charAt(i) != s.charAt(s.length() - i - 1))
+			{
+				if (s.charAt(i) != s.charAt(s.length() - i - 1)) 
+				{
+					if (s.charAt(i + 1) == s.charAt(s.length() - i - 1)) 
+					{
 						return i;
-					} else {
+					} 
+					else 
+					{
 						return s.length() - i - 1;
 					}
 				}

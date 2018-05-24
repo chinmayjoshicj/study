@@ -32,7 +32,7 @@ public class Synchronization
 	        Runnable r2 = () -> 
 	        {
 	            ID id = new ID();
-	            System.out.println("ID value: "+id.getID());
+	           /* System.out.println("ID value: "+*/id.getID();/*);*/
 	        };
 	        Thread one = new Thread(r2,"one");   
 	        one.start();
@@ -40,10 +40,11 @@ public class Synchronization
 	        two.start();     
 	   }
 
-    public static /*synchronized*/ int getID()
+    /*public static synchronized int getID()
     {
+    	System.out.println(Thread.currentThread().getName()+"ss");
         return counter++;
-    }
+    }*/
     
 }
 
