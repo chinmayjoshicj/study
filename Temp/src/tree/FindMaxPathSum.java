@@ -57,7 +57,7 @@ public class FindMaxPathSum {
         b.root.right = new Node(10);
         b.root.left.left = new Node(20);
         b.root.left.right = new Node(1);
-        b.root.right.right = new Node(25);
+        b.root.right.right = new Node(-25);
         b.root.right.right.left = new Node(3);
         b.root.right.right.right = new Node(4);
         

@@ -3,8 +3,6 @@ package collections;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.omg.CORBA.PUBLIC_MEMBER;
-
 class Student
 {
 	private String regNum;

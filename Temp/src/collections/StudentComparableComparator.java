@@ -111,11 +111,9 @@ public class StudentComparableComparator
 			{
 				return o1.compareToIgnoreCase(o2);
 			}
-			
 		});
 		for (String string : list) {
 			System.out.println(string);
 		}
-		
 	}
 }

@@ -12,7 +12,6 @@ public class HashSetClass
 	/*Objects that you insert in HashSet are NOT GUARANTEED to be INSERTED IN SAME ORDER. Objects are inserted based on their HASHCODE.
 	NULL elements are allowed in HashSet.
 	
-	NULL elements are allowed in HashSet.
 	*/
 	
 	public static void main(String[] args)
