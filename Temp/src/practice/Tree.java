@@ -44,6 +44,52 @@ public class Tree
 		System.out.println();
 		System.out.println("Spiral traversal of a tree: ");
 		spiralOrderTraversal(root);
+		System.out.println();
+		System.out.println();
+		System.out.println("Diameter of a tree:");
+		System.out.println(Diameter(root));
+		System.out.println("Boundry Nodes Clockwise:");
+		BoundryNodesTraversal(root);
+		System.out.println();
+	}
+	private static void BoundryNodesTraversal(TreeNode rootNode)
+	{
+//		System.out.println(rootNode.data);
+		TreeNode temp=rootNode;
+		while (temp.left!=null && temp.right!=null)
+		{
+			System.out.print(temp.data+" ");
+			temp=temp.right;
+		}
+		printLeafNodes(rootNode);
+		temp=rootNode;
+		while (temp.left!=null && temp.right!=null)
+		{
+			System.out.print(temp.data+" ");
+			temp=temp.left;
+		}
+	}
+	private static void printLeafNodes(TreeNode rootNode)
+	{
+		if (rootNode==null) {
+			return;
+		}
+		if (rootNode.left==null && rootNode.right==null)
+		{
+			System.out.print(rootNode.data+" ");
+		}
+		printLeafNodes(rootNode.right);
+		printLeafNodes(rootNode.left);
+	}
+	private static int Diameter(TreeNode rootNode)
+	{
+		if (rootNode==null) {
+			return 0;
+		}
+		int lheight=HeightOfaTree(rootNode.left);
+		int rheight=HeightOfaTree(rootNode.right);
+		
+		return Math.max(lheight+rheight+1, Math.max(Diameter(rootNode.left), Diameter(rootNode.left)));
 	}
 	private static int HeightOfaTree(TreeNode rootNode) 
 	{
