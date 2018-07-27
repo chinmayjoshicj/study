@@ -13,14 +13,14 @@ public class BobAndForest
 			  { 'X','M','H','V','Y','G','R','Q'},
 			  { 'E','O','*','*','F','K','A','L'},
 			  { 'U','E','*','*','S','K','S','W'},
-			  { '*','*','T','K','Y','*','*','H'},
+			  { '*','*','*','*','Y','*','*','H'},
 			  { '*','*','*','*','S','*','*','O'},
-			  { 'Q','R','*','*','T','Z','K','T'},
+			  { '*','*','*','*','T','Z','K','T'},
 			  { 'D','R','F','S','S','Z','K','Y'}};
 		
-		int k=2;
+		int k=3;
 //		findSquare(row,column);
-		for (int row = 0; row < 8-k+1; row++)
+		for (int row = 0; row < 9-k+1; row++)
 		{
 			for (int column = 0; column < 8-k+1; column++) 
 			{
@@ -40,7 +40,6 @@ public class BobAndForest
 						}
 					}
 				}
-				
 				if (noOfCells==k*k) 
 				{
 					System.out.println("Row: "+row+"Column: "+column);
@@ -49,33 +48,6 @@ public class BobAndForest
 				System.out.println();
 		}
 		System.out.println(count);
-		/*if (k > 8) return;
-        
-        // row number of first cell in 
-        // current sub-square of size k x k
-        for (int i = 0; i < 8-k+1; i++)
-        {
-             
-            // column of first cell in current 
-            // sub-square of size k x k
-            for (int j = 0; j < 8-k+1; j++)
-            {
-                 
-                // Calculate and print sum of 
-                // current sub-square
-                int sum = 0;
-                for (int p = i; p < k+i; p++){
-                    for (int q = j; q < k+j; q++){
-                       System.out.print(board[p][q]+" ");
-                    }System.out.println();}
-                System.out.println();
-                //System.out.print(sum+ " ");
-            }
-         
-            // Line separator for sub-squares 
-            // starting with next row
-            System.out.println();
-        }*/
 	}
 }
 }

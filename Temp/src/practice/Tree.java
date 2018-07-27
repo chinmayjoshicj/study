@@ -89,7 +89,7 @@ public class Tree
 		int lheight=HeightOfaTree(rootNode.left);
 		int rheight=HeightOfaTree(rootNode.right);
 		
-		return Math.max(lheight+rheight+1, Math.max(Diameter(rootNode.left), Diameter(rootNode.left)));
+		return Math.max(lheight+rheight+1, Math.max(Diameter(rootNode.right), Diameter(rootNode.left)));
 	}
 	private static int HeightOfaTree(TreeNode rootNode) 
 	{

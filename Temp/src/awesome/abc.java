@@ -19,7 +19,6 @@ public class abc
 		String a3=new String("abc");
 		String a4=new String("abc");
 		
-		
 		System.out.println();
 		
 		System.out.println(a1==a2);

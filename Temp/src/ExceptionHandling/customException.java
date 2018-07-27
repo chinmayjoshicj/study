@@ -1,8 +1,6 @@
 package ExceptionHandling;
 
-import java.io.IOException;
-
-public class customException  extends IOException {
+public class customException  extends RuntimeException {
 
 	/*If a method does not handle a checked exception, the method must declare it using the throws keyword. 
 	 
