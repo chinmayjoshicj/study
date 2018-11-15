@@ -20,8 +20,8 @@ public class HashSetClass
 		  set.add("Jason");
 		  set.add("Namita");
 		  set.add("Needa");
-		  set.add("Chinmay");  
-		  set.add("Chinmay");
+		  set.add("Chinmay.png");  
+		  set.add("Chinmay.txt");
 		  //Traversing elements  
 		  Iterator<String> itr=set.iterator();  
 		  while(itr.hasNext())

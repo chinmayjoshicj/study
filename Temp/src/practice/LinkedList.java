@@ -36,7 +36,6 @@ public class LinkedList
 		
 		printList();
 		reverseLinkedList();
-		
 	}
 	private static void reverseLinkedList() 
 	{
@@ -59,8 +58,6 @@ public class LinkedList
 		List curr_node=head;
 		while (curr_node.next!=null)
 		{
-//			printList();
-//			System.out.println();
 			if (curr_node.data==curr_node.next.data)
 			{
 				curr_node.next=curr_node.next.next;

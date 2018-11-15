@@ -1,6 +1,6 @@
 package awesome;
 
-public class recursiveSeries {
+public class rrecursiveSeries {
 	
 	public static int a (int n, int i) {
 		int prod=1;
