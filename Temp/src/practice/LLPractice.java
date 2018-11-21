@@ -1,94 +1,93 @@
 package practice;
 
-public class LLPractice 
-{
-	static List RootNode= new List(10); 
-	public static void main(String[] args) 
-	{
+public class LLPractice {
+	static List RootNode = new List(10);
+
+	public static void main(String[] args) {
 		CreateLL();
 		printLL();
-		
+		System.out.println();
+		System.out.println("Middle Element is: ");
 		findMiddleElement();
 		System.out.println();
 		System.out.print("After Duplicate Removal :");
 		removeDuplicates();
-		
+
 		printLL();
 		reverseLinkedList();
 		System.out.println();
 		System.out.print("Reversed Linked List: ");
 		printLL();
 	}
-	private static void reverseLinkedList() 
-	{
-		List curr=RootNode;
-		List prev=null;
-		List next=null;
-		
-		while(curr!=null)
-		{
-			next=curr.next;
-			curr.next=prev;
-			prev=curr;
-			curr=next;
-		}
-		RootNode=prev;
+
+	private static void CreateLL() {
+		addElements(20);
+		addElements(20);
+		addElements(30);
+		addElements(40);
+		addElements(50);
+		addElements(60);
 	}
-	private static void removeDuplicates()
-	{
-		List prev=RootNode;
-		List temp=RootNode.next;
-		while(temp!=null)
-		{
-			if (temp.data==prev.data)
-			{
-				prev.next=temp.next;
+
+	private static void addElements(int i) {
+		List temp = RootNode;
+		while (true) {
+			if (temp.next == null) {
+				temp.next = new List(i);
+				break;
+			} else
+				temp = temp.next;
+		}
+	}
+
+	private static void findMiddleElement() {
+		if (RootNode == null) {
+			return;
+		}
+		List first = RootNode;
+		List second = RootNode.next;
+		while (first != null && second != null) {
+			first = first.next;
+			second = second.next;
+			if (second != null) {
+				second = second.next;
 			}
-			prev=temp;
-			temp=temp.next;
+		}
+		System.out.println(first.data);
+	}
+
+	private static void removeDuplicates() {
+		List curr = RootNode;
+		List next = RootNode.next;
+		while (curr != null && next != null) {
+			if (curr.data == next.data) {
+				curr.next = next.next;
+				next = curr.next;
+			}
+			curr = curr.next;
+			next = next.next;
 		}
 	}
-	private static void findMiddleElement()
-	{
-		List slow=RootNode;
-		List fast=RootNode;
-		
-		while(fast!=null && fast.next!=null)
-		{
-			slow=slow.next;
-			fast=fast.next.next;
+
+	private static void reverseLinkedList() {
+		List curr = RootNode;
+		List next = null;
+		List prev = null;
+
+		while (curr != null) {
+			next = curr.next;
+			curr.next = prev;
+			prev = curr;
+			curr = next;
 		}
-		System.out.print("Middle Element is :"+slow.data);
+		RootNode = prev;
 	}
-	private static void printLL() 
-	{
-		List temp=RootNode;
-		while(temp!=null)
-		{
-			System.out.print(temp.data+" ");
-			temp=temp.next;
+
+	private static void printLL() {
+		List temp = RootNode;
+		while (temp != null) {
+			System.out.print(temp.data + " ");
+			temp = temp.next;
 		}
-		System.out.println();
-	}
-	private static void CreateLL() 
-	{
-		addElement(20);
-		addElement(20);
-		addElement(30);
-		addElement(100);
-		addElement(40);
-		addElement(50);
-		addElement(60);
-		
-		System.out.print("Initially List: ");
-		/*addElement(60);*/
-	}
-	private static void addElement(int i) {
-		List node=RootNode;
-		while (node.next!=null) {
-			node=node.next;
-		}
-		List temp= new List(i);
-		node.next=temp;
 	}
 }

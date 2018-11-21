@@ -4,42 +4,45 @@ public class MergeSort {
 
 	public static void main(String[] args) 
 	{
-		int arr[]={2,4,1,6,8,5,3,7};
-		perFormMergeSort(arr);
+		int arr[]={2,4,1,6,8,20,3,7};
+		perFormMergeSort(arr,0,arr.length-1);
 		for (int i = 0; i < arr.length; i++) 
 		{
 			System.out.print(arr[i]+" ");
 		}
 	}
 
-	private static void perFormMergeSort(int[] arr) 
+	private static void perFormMergeSort(int[] arr, int l, int r) 
 	{
-		int length=arr.length;
-		int mid=arr.length/2;
-
-		if (length<2) {
-			return;
-		}
-		int leftArr[]=new int[mid];
-		int rightArr[]=new int[length-mid];
-		
-		for (int i = 0; i < mid; i++) {
-			leftArr[i]=arr[i];
+		if (l<r)
+		{
+			int m=(l+r)/2;
+			perFormMergeSort(arr, l, m);
+			perFormMergeSort(arr, m+1, r);
+			merge(arr,l,m,r);
 		}
 		
-		for (int i = mid; i < arr.length; i++) {
-			rightArr[i-mid]=arr[i];
-		}
-		perFormMergeSort(leftArr);
-		perFormMergeSort(rightArr);
-		merge(leftArr,rightArr,arr);
 	}
 
-	private static void merge(int[] leftArr, int[] rightArr, int[] arr) 
-	{
-		int left=0;
-		int right=0;
-		int k=0;
+	private static void merge(int[] arr, int left, int mid, int right) {
+		// TODO Auto-generated method stub
+		
+		int i=0;
+		int j=0;
+		int k=left;
+		
+		int n1 = mid-left+1;
+		int leftArr[]=new int[n1];
+		int n2 = right-mid;
+		int rightArr[]=new int[n2];
+		
+		for (int i2 = 0; i2 < n1; i2++) {
+			leftArr[i2]=arr[i2];
+		}
+		
+		for (int i2 = mid; i2 < n2; i2++) {
+			rightArr[i2-mid]=arr[i2];
+		}
 		
 		while (left<leftArr.length && right<rightArr.length) 
 		{
@@ -56,16 +59,16 @@ public class MergeSort {
 		
 		if (right>rightArr.length) 
 		{
-			for (int i = left; i < leftArr.length; i++) 
+			for (int i2 = left; i2 < leftArr.length; i++) 
 			{
 				arr[k++]=leftArr[i];
 			}
 		}
 		if (left>leftArr.length) 
 		{
-			for (int i = right; i < rightArr.length; i++) 
+			for (int i2 = right; i2 < rightArr.length; i2++) 
 			{
-				arr[k++]=rightArr[i];
+				arr[k++]=rightArr[i2];
 			}
 		}
 	}

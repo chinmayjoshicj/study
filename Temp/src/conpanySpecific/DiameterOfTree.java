@@ -4,12 +4,12 @@ import tree.Node;
 
 public class DiameterOfTree {
 	static Node root=null;
-	private static void insertNode(node root,int i) 
+	private static void insertNode(node1 root,int i) 
 	{
 		if(root.data>i)
 		{
 			if (root.left==null) {
-				root.left=new node(i);
+				root.left=new node1(i);
 			}
 			else
 			{
@@ -18,7 +18,7 @@ public class DiameterOfTree {
 		}
 		else if (root.data<i) {
 			if (root.right==null) {
-				root.right=new node(i);
+				root.right=new node1(i);
 			}
 			else
 				insertNode(root.right, i);

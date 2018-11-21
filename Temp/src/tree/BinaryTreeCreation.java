@@ -12,7 +12,7 @@ class Node1 {
 }
 
 public class BinaryTreeCreation {
-	Node1 root;
+	Node root;
 	static int max=0;
 
 	public BinaryTreeCreation() {
@@ -20,12 +20,12 @@ public class BinaryTreeCreation {
 	}
 
 	public BinaryTreeCreation(int item) {
-		this.root = new Node1(item);
+		this.root = new Node(item);
 	}
 
 	public void insert(int item, Node1 root) {
 		if (root == null) {
-			this.root = new Node1(item);
+			this.root = new Node(item);
 			return;
 		} else if (root.data > item) {
 			if (root.left == null) {
@@ -43,7 +43,7 @@ public class BinaryTreeCreation {
 		}
 	}
 
-	public int MaxPathSum(Node1 root, int sum) 
+	public int MaxPathSum(Node root2, int sum) 
 	{
 		return sum;
 		/*if (root == null) 
@@ -86,14 +86,14 @@ public class BinaryTreeCreation {
 		 * b.insert(40,b.root); b.insert(50,b.root);
 		 */
 
-		b.root = new Node1(10);
-		b.root.left = new Node1(2);
-		b.root.right = new Node1(10);
-		b.root.left.left = new Node1(20);
-		b.root.left.right = new Node1(1);
-		b.root.right.right = new Node1(-25);
-		b.root.right.right.left = new Node1(3);
-		b.root.right.right.right = new Node1(4);
+		b.root = new Node(10);
+		b.root.left = new Node(2);
+		b.root.right = new Node(10);
+		b.root.left.left = new Node(20);
+		b.root.left.right = new Node(1);
+		b.root.right.right = new Node(-25);
+		b.root.right.right.left = new Node(3);
+		b.root.right.right.right = new Node(4);
 
 		b.MaxPathSum(b.root,0);
 		System.out.println(max);

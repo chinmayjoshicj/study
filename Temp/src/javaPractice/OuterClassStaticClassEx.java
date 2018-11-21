@@ -30,7 +30,7 @@ public class OuterClassStaticClassEx
 	class Main
 	{
 		// How to create instance of static and non static nested class?
-	    public static void main(String args[])
+	    public void main(String args[])
 	    {
 	    	// create instance of nested Static class
 	       OuterClassStaticClassEx.NestedStaticClass printer = new OuterClassStaticClassEx.NestedStaticClass();
