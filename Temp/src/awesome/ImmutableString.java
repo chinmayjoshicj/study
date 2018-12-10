@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.PriorityQueue;
 
-public class abc {
+public class ImmutableString {
 	public static void main(String[] args) {
 		/*
 		 * int i = Integer.parseInt("1001", 2); int mask = 9;
@@ -15,7 +15,7 @@ public class abc {
 		 * System.out.println((i & mask) == 9); }
 		 */
 
-		System.out.println(Math.pow(2, 64));
+//		System.out.println(Math.pow(2, 64));
 
 		String a1 = "abc";
 		String a2 = "abc";
@@ -25,12 +25,14 @@ public class abc {
 
 		System.out.println();
 
-		System.out.println("a1==a2: " + a1 == a2);
+		System.out.println("ac ");
+		System.out.println(a1 == a2);
 		System.out.println("a1.equals(a2): " + a1.equals(a2));
 
 		System.out.println();
 
-		System.out.println("a3==a4: " + a3 == a4);
+		System.out.println("a3==a4: ");
+		System.out.println(a3 == a4);
 		System.out.println("a3.equals(a4): " + a3.equals(a4));
 
 		LinkedHashMap<Character, Integer> lmap = new LinkedHashMap<>();

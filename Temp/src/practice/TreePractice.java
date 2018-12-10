@@ -134,7 +134,7 @@ public class TreePractice {
 		 System.out.println();
 		 System.out.println();
 		 System.out.println("Preorder without Recursion: ");
-//		 preorderWithoutRecursion(root);
+		 preorderWithoutRecursion(root);
 		 System.out.println();
 		 System.out.println();
 		 System.out.println("Check if a Tree is Height Balanced: ");
@@ -174,6 +174,39 @@ public class TreePractice {
 		 int paths[]= new int[100];
 		 System.out.println("Root To leaf paths are: ");
 //		 printAllRootToLeafPaths(root, paths,0);
+	}
+
+	private static void preorderWithoutRecursion(TreeNode root)
+	{
+		Stack<TreeNode> s= new Stack<>();
+		TreeNode curr= root;
+		System.out.println("Chinmay: ");
+		while ( curr!=null || !s.isEmpty() ) 
+		{
+			while(curr!=null)
+			{
+				System.out.print(curr.data+" ");
+				s.push(curr);
+				curr=curr.left;
+			}
+			curr=s.pop();
+			curr=curr.right;
+		}
+		
+		/*Stack<TreeNode> s= new Stack<>();
+		TreeNode curr= rootNode;
+		
+		while(curr!=null || !s.isEmpty())
+		{
+			while(curr!=null)
+			{
+				System.out.print(curr.data+" ");
+				s.push(curr);
+				curr=curr.left;
+			}
+			curr=s.pop();
+			curr=curr.right;
+		}*/
 	}
 
 	private static void BottomView(TreeNode root) 
