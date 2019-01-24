@@ -5,7 +5,7 @@ import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
 
-public class Triangle implements ApplicationContextAware,BeanNameAware  {
+public class Triangle implements ApplicationContextAware,BeanNameAware,Shape  {
 
 	/*private String type;
 	public Triangle(String type, int height) {
@@ -71,6 +71,7 @@ public class Triangle implements ApplicationContextAware,BeanNameAware  {
 		this.pointC = pointC;
 	}
 	public void draw() {
+		System.out.println("Drawing Triangle");
 		System.out.println("Point A = ("+getPointA().getX()+", "+getPointA().getY()+")");
 		System.out.println("Point B = ("+getPointB().getX()+", "+getPointB().getY()+")");
 		System.out.println("Point C = ("+getPointC().getX()+", "+getPointC().getY()+")");

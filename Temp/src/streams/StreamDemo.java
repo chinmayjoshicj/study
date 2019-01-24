@@ -1,7 +1,6 @@
 package streams;
 
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -40,7 +39,8 @@ public class StreamDemo {
 		number.stream().map(x -> x * x).forEach(y -> System.out.println(y));
 
 		// demonstration of reduce method
-		int even = number.stream().filter(x -> x % 2 == 0).reduce(0, (ans, i) -> ans + i);
+		System.out.println("Reduce Method ");
+		int even = numbers.stream().filter(x -> x % 2 == 0).reduce(0, (ans, i) -> ans + i);
 		System.out.println(even);
 
 		Map<Integer, Integer> result1 =
