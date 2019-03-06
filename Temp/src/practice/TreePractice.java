@@ -1,12 +1,20 @@
 package practice;
 
+import java.awt.Robot;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+import threads.statesOfThread;
+
 import java.util.Set;
 import java.util.Stack;
 import java.util.TreeMap;
+
+import stacks.stack;
 
 /*class TreeNode
 {
@@ -40,6 +48,7 @@ public class TreePractice {
 	static int max_level = 0;
 	static Map<Integer, TreeNode> topViewMap = new HashMap<Integer, TreeNode>();
 	static Map<Integer, TreeNode> leftViewMap = new HashMap<Integer, TreeNode>();
+	static HashSet<TreeNode> leftViewHashSet = new HashSet<TreeNode>();
 	static Map<Integer, TreeNode> bottomViewMap = new HashMap<Integer, TreeNode>();
 
 	public static void main(String[] args) {
@@ -52,6 +61,7 @@ public class TreePractice {
 
 		root.left.right = new TreeNode(12, 0);
 		root.left.right.right = new TreeNode(14, 1);
+		// root.left.right.right.right = new TreeNode(15, 2);
 
 		root.left.right.left = new TreeNode(10, -1);
 
@@ -110,9 +120,9 @@ public class TreePractice {
 		// BoundryNodesTraversal(root);
 		System.out.println();
 		System.out.println("Left View Is");
-		LeftView(root, 1);
+		LeftViewMy(root);
 		for (Entry<Integer, TreeNode> entry : leftViewMap.entrySet()) {
-			System.out.print(entry.getValue().data + " ");
+			System.out.print(/* entry.getKey()+" "+ */entry.getValue().data + " ");
 		}
 		System.out.println();
 		System.out.println("Bottom View");
@@ -177,14 +187,53 @@ public class TreePractice {
 		System.out.println("Root To leaf paths are: ");
 		printAllRootToLeafPaths(root, paths, 0);
 		System.out.println("Root to Leaf Path Sum: " + findRootToLeafSumPath(root, 54));
+		System.out.println();
+		System.out.println();
+		System.out.println("Max Width of Tree is: ");
+		System.out.println(maximumWidthOfBinaryTree(root));
+	}
+
+	private static int maximumWidthOfBinaryTree(TreeNode root)
+	{
+		int maxWidth=0;
+		if (root==null) {
+			return 0;
+		}
+		Stack<TreeNode> curr= new Stack<>();
+		Stack<TreeNode> next= new Stack<>();
+		curr.push(root);
+		List<Integer> data= new ArrayList<>();
+		while (!curr.isEmpty()) {
+			TreeNode pop = curr.pop();
+			data.add(pop.data);
+			if (pop.left!=null) {
+				next.add(pop.left);
+			}
+			if (pop.right!=null) {
+				next.add(pop.right);
+			}
+			if (maxWidth<data.size()) {
+				maxWidth=data.size();
+			}
+			if (curr.isEmpty()) {
+				data.clear();
+				Stack<TreeNode> s=curr;
+				curr=next;
+				next=s;
+			}
+		}
+		return maxWidth;
 	}
 
 	private static void findMin(TreeNode root) {
 		if (root == null) {
 			return;
 		}
-		if (root.data < min) {
-			min = root.data;
+		if (root.left != null && root.left.data < min) {
+			min = root.left.data;
+		}
+		if (root.right != null && root.right.data < min) {
+			min = root.right.data;
 		}
 		findMin(root.left);
 		findMin(root.right);
@@ -194,30 +243,39 @@ public class TreePractice {
 		if (root == null) {
 			return 0;
 		}
-		int left = HeightOfaTree(root.left) + 1;
-		int right = HeightOfaTree(root.right) + 1;
+		int lh = HeightOfaTree(root.left) + 1;
+		int rh = HeightOfaTree(root.right) + 1;
 
-		return left > right ? left : right;
+		return Integer.max(lh, rh);
 	}
 
-	private static boolean checkTreeBST(TreeNode rootNode, int minValue, int maxValue) {
-		if (rootNode == null) {
+	private static boolean checkTreeBST(TreeNode root, int minValue, int maxValue) {
+		if (root == null) {
 			return true;
 		}
-		if (rootNode.data > maxValue || rootNode.data < minValue) {
-			return false;
+		if (root.left != null) {
+			if (root.data < root.left.data) {
+				return false;
+			}
 		}
-		return checkTreeBST(rootNode.left, minValue, rootNode.data - 1)
-				&& checkTreeBST(rootNode.right, rootNode.data + 1, maxValue);
+		if (root.right != null) {
+			if (root.data > root.right.data) {
+				return false;
+			}
+		}
+		return checkTreeBST(root.left, minValue, root.data) && checkTreeBST(root.right, root.data, maxValue);
 	}
 
 	private static void levelOrderTraversal(TreeNode root) {
+		if (root == null) {
+			return;
+		}
 		Stack<TreeNode> currLevel = new Stack<>();
 		Stack<TreeNode> nextLevel = new Stack<>();
 
 		currLevel.push(root);
 
-		while (!currLevel.empty()) {
+		while (!currLevel.isEmpty()) {
 			TreeNode pop = currLevel.pop();
 			System.out.print(pop.data + " ");
 			if (pop.left != null) {
@@ -235,23 +293,21 @@ public class TreePractice {
 	}
 
 	private static void levelOrderWithoutStackQueue(TreeNode root) {
-		if (root == null) {
-			return;
-		}
-		for (int i = 1; i <= HeightOfaTree(root); i++) {
-			printLevel(root, i);
+		int heightOfTree = HeightOfaTree(root);
+		for (int i = 1; i <= heightOfTree; i++) {
+			printGivenLevel(root, i);
 		}
 	}
 
-	private static void printLevel(TreeNode root, int level) {
+	private static void printGivenLevel(TreeNode root, int level) {
 		if (root == null) {
 			return;
 		}
 		if (level == 1) {
 			System.out.print(root.data + " ");
-		} else if (level > 1) {
-			printLevel(root.left, level - 1);
-			printLevel(root.right, level - 1);
+		} else {
+			printGivenLevel(root.left, level - 1);
+			printGivenLevel(root.right, level - 1);
 		}
 	}
 
@@ -259,32 +315,27 @@ public class TreePractice {
 		if (root == null) {
 			return;
 		}
-		HashMap<Integer, TreeNode> map = new HashMap<>();
-		Stack<TreeNode> s1 = new Stack<>();
-		Stack<TreeNode> s2 = new Stack<>();
-		s1.push(root);
+		Stack<TreeNode> currLevel = new Stack<>();
+		Stack<TreeNode> nextLevel = new Stack<>();
 
-		while (!s1.isEmpty()) {
-			TreeNode pop = s1.pop();
-			if (!map.containsKey(pop.hd)) {
-				map.put(pop.hd, pop);
+		currLevel.push(root);
+
+		while (!currLevel.isEmpty()) {
+			TreeNode pop = currLevel.pop();
+			if (!topViewMap.containsKey(pop.hd)) {
+				topViewMap.put(pop.hd, pop);
 			}
 			if (pop.left != null) {
-				s2.push(pop.left);
+				nextLevel.push(pop.left);
 			}
 			if (pop.right != null) {
-				s2.push(pop.right);
+				nextLevel.push(pop.right);
 			}
-			if (s1.isEmpty()) {
-				Stack<TreeNode> s3 = new Stack<>();
-				s3 = s1;
-				s1 = s2;
-				s2 = s3;
+			if (currLevel.isEmpty()) {
+				Stack<TreeNode> temp = currLevel;
+				currLevel = nextLevel;
+				nextLevel = temp;
 			}
-		}
-		Set<Entry<Integer, TreeNode>> entrySet = map.entrySet();
-		for (Entry<Integer, TreeNode> entry : entrySet) {
-			System.out.print(entry.getValue().data + " ");
 		}
 	}
 
@@ -298,102 +349,53 @@ public class TreePractice {
 		return Integer.max(lh + rh + 1, Integer.max(Diameter(root.left), Diameter(root.right)));
 	}
 
-	private static void LeftView(TreeNode root, int level) 
-	{
-		if (root==null) {
-			return;
-		}
-		if (max_level<level)
-		{
-			leftViewMap.put(level,root);
-			max_level=level;
-		}
-		LeftView(root.left, level+1);
-		LeftView(root.right, level+1);
-	}
-
-	private static void BottomView(TreeNode root)
-	{
+	private static void LeftViewMy(TreeNode root) {
 		if (root == null) {
 			return;
 		}
-		HashMap<Integer, TreeNode> map = new HashMap<>();
-		Stack<TreeNode> s1 = new Stack<>();
-		Stack<TreeNode> s2 = new Stack<>();
-		s1.push(root);
+		printLeftView(root, 1);
+	}
 
-		while (!s1.isEmpty()) {
-			TreeNode pop = s1.pop();
-				map.put(pop.hd, pop);
+	private static void printLeftView(TreeNode root, int level) {
+		if (root == null) {
+			return;
+		}
+
+		if (!leftViewMap.containsKey(level)) {
+			leftViewMap.put(level, root);
+		}
+		printLeftView(root.left, level + 1);
+		printLeftView(root.right, level + 1);
+	}
+
+	private static void BottomView(TreeNode root) {
+		if (root == null) {
+			return;
+		}
+		Stack<TreeNode> currLevel = new Stack<>();
+		Stack<TreeNode> nextLevel = new Stack<>();
+
+		currLevel.push(root);
+
+		while (!currLevel.isEmpty()) {
+			TreeNode pop = currLevel.pop();
+			bottomViewMap.put(pop.hd, pop);
 			if (pop.left != null) {
-				s2.push(pop.left);
+				nextLevel.push(pop.left);
 			}
 			if (pop.right != null) {
-				s2.push(pop.right);
+				nextLevel.push(pop.right);
 			}
-			if (s1.isEmpty()) {
-				Stack<TreeNode> s3 = new Stack<>();
-				s3 = s1;
-				s1 = s2;
-				s2 = s3;
-			}
-		}
-		Set<Entry<Integer, TreeNode>> entrySet = map.entrySet();
-		for (Entry<Integer, TreeNode> entry : entrySet) {
-			System.out.print(entry.getValue().data + " ");
-		}
-	}
-
-	private static void preorderWithoutRecursion(TreeNode root) {
-		Stack<TreeNode> s1 = new Stack<>();
-		s1.push(root);
-		while (!s1.isEmpty()) {
-			TreeNode pop = s1.pop();
-			System.out.print(pop.data + " ");
-			if (pop.right != null) {
-				s1.push(pop.right);
-			}
-			if (pop.left != null) {
-				s1.push(pop.left);
+			if (currLevel.isEmpty()) {
+				Stack<TreeNode> temp = currLevel;
+				currLevel = nextLevel;
+				nextLevel = temp;
 			}
 		}
-	}
-
-	private static void printAllRootToLeafPaths(TreeNode root, int[] paths, int i) {
-		if (root == null) {
-			return;
-		}
-		paths[i] = root.data;
-
-		if (root.left == null && root.right == null) {
-			for (int j = 0; j <= i; j++) {
-				System.out.print(paths[j] + " ");
-			}
-			System.out.println();
-			return;
-		}
-		printAllRootToLeafPaths(root.left, paths, i + 1);
-		printAllRootToLeafPaths(root.right, paths, i + 1);
-	}
-
-	private static void kDistanceNodesFromRoot(TreeNode root, int dist) {
-		if (root == null) {
-			return;
-		}
-		if (dist == 0) {
-			System.out.print(root.data + " ");
-		}
-		kDistanceNodesFromRoot(root.left, dist - 1);
-		kDistanceNodesFromRoot(root.right, dist - 1);
-	}
-
-	private static char[] isTreeHeightBalanced(TreeNode root) {
-		return null;
 	}
 
 	private static void inOrderWithoutRecursion(TreeNode root) {
 		Stack<TreeNode> s1 = new Stack<>();
-		s1.push(root);
 		TreeNode curr = root;
 		while (curr != null || !s1.isEmpty()) {
 			while (curr != null) {
@@ -406,17 +408,22 @@ public class TreePractice {
 		}
 	}
 
-	private static boolean findRootToLeafSumPath(TreeNode root, int sum) {
-		if (root == null) {
-			return false;
-		}
-		// System.out.println(sum);
-		sum = sum - root.data;
-		if (root.left == null && root.right == null) {
-			if (sum == 0) {
-				return true;
-			}
-		}
-		return findRootToLeafSumPath(root.left, sum) || findRootToLeafSumPath(root.right, sum);
+	private static void preorderWithoutRecursion(TreeNode root) {
+
+	}
+
+	private static void kDistanceNodesFromRoot(TreeNode root, int i) {
+		// TODO Auto-generated method stub
+
+	}
+
+	private static String findRootToLeafSumPath(TreeNode root, int i) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private static void printAllRootToLeafPaths(TreeNode root, int[] paths, int i) {
+		// TODO Auto-generated method stub
+
 	}
 }

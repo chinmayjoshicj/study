@@ -31,8 +31,25 @@ public class ArrayLeftRotation {
 	return a;*/
 }
 	
-	public static void main(String[] args) 
+	
+//	private static void get(double s) {
+//		System.out.println("Object"); 
+//	}
+	
+	private static void get(Integer s) {
+		System.out.println("Integer");
+	}
+	
+	private static void get(Number s) {
+		System.out.println("Number");
+	}
+
+	
+	public static void main(String[] args) throws InterruptedException 
 	{
+		get(10);
+		
+//		Thread.currentThread().join();
 		 Scanner in = new Scanner(System.in);
 	        int n = in.nextInt();
 	        int k = in.nextInt();

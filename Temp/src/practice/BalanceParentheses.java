@@ -15,7 +15,6 @@ public class BalanceParentheses {
 		if (start > end) {
 			return false;
 		}
-		int count = 0;
 		char closing = 0;
 		if (exp.charAt(start) == '[') {
 			closing = ']';
@@ -26,6 +25,7 @@ public class BalanceParentheses {
 		if (exp.charAt(start) == '(') {
 			closing = ')';
 		}
+		int count = 0;
 		int i = 1;
 		for (i = 1; i <= end; i++) {
 			if (exp.charAt(i) == exp.charAt(start)) {
