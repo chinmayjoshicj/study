@@ -2,7 +2,8 @@ package practice;
 
 public class Heap {
 
-	static int a[] = { 9, 6, 5, 0, 8, 2, 1, 3 };
+//	static int a[] = { 9, 6, 5, 0, 8, 2, 1,3 };
+	static int a[]={1,14,10,8,7,9,3,2,4,6};
 
 	public static void main(String[] args) {
 		for (int i = a.length / 2 - 1; i >= 0; i--) {
@@ -15,8 +16,8 @@ public class Heap {
 
 	private static void max_Heapify(int i) {
 		int largest = Integer.MIN_VALUE;
-		int l = 2 * i;
-		int r = 2 * i + 1;
+		int l = (2 * i)+1;
+		int r = (2 * i) + 2;
 		if (l < a.length && a[l] > a[i]) {
 			largest = l;
 		} else {
