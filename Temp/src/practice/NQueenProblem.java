@@ -4,7 +4,7 @@ public class NQueenProblem {
 
 	public static void main(String[] args) {
 		int arr[][] = new int[8][8];
-		boolean possible =false;
+		boolean possible = false;
 		for (int i = 0; i < arr.length; i++) {
 			possible = NQueenUtils(arr, i);
 		}
@@ -30,20 +30,18 @@ public class NQueenProblem {
 		boolean posAllowed = true;
 		int col;
 		for (col = 0; col < arr.length; col++) {
-//			System.out.println("Checking for Row "+row+" Column "+col);
+			// System.out.println("Checking for Row "+row+" Column "+col);
 			posAllowed = checkPosition(row, col, arr);
 			if (!posAllowed) {
 				continue;
 			}
 			if (posAllowed) {
 				arr[row][col] = 1;
-//				drawMatrix(arr);
-//				System.out.println();
+				// drawMatrix(arr);
+				// System.out.println();
 				if (NQueenUtils(arr, row + 1)) {
 					return true;
-				}
-				else
-				{
+				} else {
 					arr[row][col] = 0;
 				}
 			}

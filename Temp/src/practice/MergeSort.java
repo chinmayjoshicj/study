@@ -13,52 +13,57 @@ public class MergeSort {
 
 	private static void perFormMergeSort(int[] arr, int l, int r) {
 		if (l < r) {
-			int m = (l + r) / 2;
-			perFormMergeSort(arr, l, m);
-			perFormMergeSort(arr, m + 1, r);
-			merge(arr, l, m, r);
+			int mid = (l + r) / 2;
+			perFormMergeSort(arr, l, mid - 1);
+			perFormMergeSort(arr, mid + 1, r);
+			merge(arr, l, mid, r);
 		}
-
 	}
 
-	private static void merge(int[] arr, int left, int mid, int right) {
-		// TODO Auto-generated method stub
+	private static void merge(int[] arr, int l, int m, int r) {
+		int n1 = m - l + 1;
+		int n2 = r - m;
 
-		int i = 0;
-		int j = 0;
-		int k = left;
+		/* Create temp arrays */
+		int L[] = new int[n1];
+		int R[] = new int[n2];
 
-		int n1 = mid - left + 1;
-		int leftArr[] = new int[n1];
-		int n2 = right - mid;
-		int rightArr[] = new int[n2];
+		/* Copy data to temp arrays */
+		for (int i = 0; i < n1; ++i)
+			L[i] = arr[l + i];
+		for (int j = 0; j < n2; ++j)
+			R[j] = arr[m + 1 + j];
 
-		for (int i2 = 0; i2 < n1; i2++) {
-			leftArr[i2] = arr[i2];
-		}
+		/* Merge the temp arrays */
 
-		for (int i2 = mid; i2 < n2; i2++) {
-			rightArr[i2 - mid] = arr[i2];
-		}
+		// Initial indexes of first and second subarrays
+		int i = 0, j = 0;
 
-		while (left < leftArr.length && right < rightArr.length) {
-			if (leftArr[left] <= rightArr[right]) {
-				arr[k] = leftArr[left++];
+		// Initial index of merged subarry array
+		int k = l;
+		while (i < n1 && j < n2) {
+			if (L[i] <= R[j]) {
+				arr[k] = L[i];
+				i++;
 			} else {
-				arr[k] = rightArr[right++];
+				arr[k] = R[j];
+				j++;
 			}
 			k++;
 		}
 
-		if (right > rightArr.length) {
-			for (int i2 = left; i2 < leftArr.length; i++) {
-				arr[k++] = leftArr[i];
-			}
+		/* Copy remaining elements of L[] if any */
+		while (i < n1) {
+			arr[k] = L[i];
+			i++;
+			k++;
 		}
-		if (left > leftArr.length) {
-			for (int i2 = right; i2 < rightArr.length; i2++) {
-				arr[k++] = rightArr[i2];
-			}
+
+		/* Copy remaining elements of R[] if any */
+		while (j < n2) {
+			arr[k] = R[j];
+			j++;
+			k++;
 		}
 	}
 }

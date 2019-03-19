@@ -1,5 +1,7 @@
 package practice;
 
+import conpanySpecific.LargestNumber;
+
 public class KthSmallestElementArray 
 {
 	public static void main(String[] args) 
@@ -37,31 +39,28 @@ public class KthSmallestElementArray
 	}
 	private static void methodMinHeap(int[] arr) 
 	{
-		int i=arr.length/2;
+		int length=arr.length;
 		
-		while (i>=0) 
-		{
-			heapify(arr,i);
-			i--;
+		for (int i = (length/2)-1; i >=0; i--) {
+			heapify(arr, i);
 		}
 	}
 	private static void heapify(int[] arr, int i) 
 	{
-		int l=2*i+1;
-		int r=2*i+2;
+		int l=(2*i)+1;
+		int r=(2*i)+2;
 		
 		int smallest=i;
-		if (l<arr.length && arr[l]<arr[i]) {
+		if (l<arr.length && arr[i]>arr[l]) {
 			smallest=l;
 		}
-		if (r<arr.length && arr[r]<arr[smallest]) {
+		if (r<arr.length && arr[smallest]>arr[r]) {
 			smallest=r;
 		}
-		if (smallest!=i)
-		{
-			int temp=arr[i];
-			arr[i]=arr[smallest];
-			arr[smallest]=temp;
+		if (smallest!=i) {
+			int temp=arr[smallest];
+			arr[smallest]=arr[i];
+			arr[i]=temp;
 			heapify(arr, smallest);
 		}
 	}

@@ -14,35 +14,28 @@ public class VatsalBhaiAnagrams {
 
 	public static void main(String[] args) {
 		method1();
-//		method2();
+		// method2();
 	}
 
-	private static void method2() 
-	{
-		HashMap<Integer, ArrayList<String>> map= new HashMap<>();
-		for (int i = 0; i < arr.length; i++) 
-		{
-			int s=0;
-			for (int j = 0; j < arr[i].length(); j++) 
-			{
-				s+=arr[i].charAt(j)-'a';
+	private static void method2() {
+		HashMap<Integer, ArrayList<String>> map = new HashMap<>();
+		for (int i = 0; i < arr.length; i++) {
+			int s = 0;
+			for (int j = 0; j < arr[i].length(); j++) {
+				s += arr[i].charAt(j) - 'a';
 			}
-			if (map.containsKey(s))
-			{
+			if (map.containsKey(s)) {
 				ArrayList<String> arrayList = map.get(s);
 				arrayList.add(arr[i]);
 				map.put(s, arrayList);
-			}
-			else
-			{
+			} else {
 				ArrayList<String> arrayList = new ArrayList<>();
 				arrayList.add(arr[i]);
 				map.put(s, arrayList);
 			}
 		}
-		for (Entry<Integer,ArrayList<String>>set:map.entrySet())
-		{
-			System.out.println(set.getValue()+" ");
+		for (Entry<Integer, ArrayList<String>> set : map.entrySet()) {
+			System.out.println(set.getValue() + " ");
 		}
 		System.out.println();
 	}

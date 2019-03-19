@@ -56,18 +56,18 @@ public class LLPractice {
 	}
 
 	private static void findMiddleElement() {
-		int len=0;
+		int len = 0;
 		List temp = RootNode;
 		while (temp != null) {
 			len++;
-			temp=temp.next;
+			temp = temp.next;
 		}
-		len=len/2;
+		len = len / 2;
 		temp = RootNode;
-		while (len!=0) {
+		while (len != 0) {
 			len--;
-			temp=temp.next;
-			if (len==0) {
+			temp = temp.next;
+			if (len == 0) {
 				System.out.print(temp.data);
 			}
 		}
@@ -76,8 +76,8 @@ public class LLPractice {
 	private static void printLL() {
 		List temp = RootNode;
 		while (temp != null) {
-			System.out.print(temp.data+" ");
-			temp=temp.next;
+			System.out.print(temp.data + " ");
+			temp = temp.next;
 		}
 	}
 

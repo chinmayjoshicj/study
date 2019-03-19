@@ -79,5 +79,4 @@ public final class ImmutableClass {
 
 		System.out.println(im.getA().getAdd());
 	}
-
 }

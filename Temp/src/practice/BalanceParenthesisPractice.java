@@ -5,42 +5,42 @@ import java.util.Stack;
 public class BalanceParenthesisPractice {
 	public static void main(String[] args) {
 		String exp = "[()]{}{[()()]()}";
-		exp = "(()){{}()}";
+		exp = "(()){{}(}";
 		char[] charArray = exp.toCharArray();
 		System.out.println(method1(exp, 0, exp.length() - 1));
 		System.out.println(check(exp));
 	}
 
 	private static boolean method1(String exp, int start, int end) {
-		Stack<Character> s1 = new Stack<>();
-		if (exp.charAt(0) == '}' || exp.charAt(0) == ']' || exp.charAt(0) == ')') {
+		if (exp.charAt(0) == '}' && exp.charAt(0) == ']' && exp.charAt(0) == ')') {
 			return false;
 		}
-		s1.push(exp.charAt(0));
-		int i = 1;
-		while (i != exp.length()) {
-			if (exp.charAt(i) == '[' || exp.charAt(i) == '{' || exp.charAt(i) == '(') {
-				s1.push(exp.charAt(i));
+		Stack<Character> s = new Stack<>();
+		int pointer = 0;
+		while (!s.isEmpty() || pointer < exp.length()) {
+			if (exp.charAt(pointer) == '{' || exp.charAt(pointer) == '[' || exp.charAt(pointer) == '(') {
+				s.push(exp.charAt(pointer));
 			} else {
-				if (exp.charAt(i) == ']') {
-					if (s1.pop() != '[') {
+				char pop = s.pop();
+				if (exp.charAt(pointer) == '}') {
+					if (pop != '{') {
 						return false;
 					}
 				}
-				if (exp.charAt(i) == '}') {
-					if (s1.pop() != '{') {
+				if (exp.charAt(pointer) == ']') {
+					if (pop != '[') {
 						return false;
 					}
 				}
-				if (exp.charAt(i) == ')') {
-					if (s1.pop() != '(') {
+				if (exp.charAt(pointer) == ')') {
+					if (pop != '(') {
 						return false;
 					}
 				}
 			}
-			i++;
+			pointer++;
 		}
-		if (!s1.empty()) {
+		if (!s.isEmpty()) {
 			return false;
 		}
 		return true;
