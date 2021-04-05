@@ -76,6 +76,8 @@ public class Tree {
 		System.out.println(HeightOfaTree(root));
 		System.out.println("Is Binary Tree or Not: " + checkTreeBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
 		System.out.println();
+		System.out.println("Is Binary Tree or Not: Method 2 " + checkTreeBST2(root, null, null));
+		System.out.println();
 		System.out.println();
 		System.out.println("Spiral traversal of a tree: ");
 		spiralOrderTraversal(root);
@@ -144,7 +146,7 @@ public class Tree {
 		System.out.println();
 		System.out.println();
 		System.out.println("Path Sum Equal to k:");
-		System.out.println(pathSumK(root, 62));
+		System.out.println(pathSumK(root, 54));
 		System.out.println("Sum Of Cousin Nodes is:");
 		ConnectNodesAtSameLevel(root);
 		System.out.println();
@@ -650,11 +652,24 @@ public class Tree {
 		return checkTreeBST(rootNode.left, minValue, rootNode.data - 1)
 				&& checkTreeBST(rootNode.right, rootNode.data + 1, maxValue);
 	}
+	private static boolean checkTreeBST2(TreeNode rootNode, TreeNode l, TreeNode r) {
+		if (rootNode == null) {
+			return true;
+		}
+		if (l != null && root.data <= l.data) 
+	        return false; 
+		
+		 if (r != null && root.data >= r.data) 
+		        return false; 
+		return checkTreeBST2(rootNode.left, l, rootNode)
+				&& checkTreeBST2(rootNode.right, rootNode,r);
+	}
 
 	private static void findMin(TreeNode rootNode) {
 		if (rootNode == null) {
 			return;
 		}
+		System.out.println(rootNode.data);
 		if (rootNode.data < min) {
 			min = rootNode.data;
 		}

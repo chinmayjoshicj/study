@@ -38,17 +38,7 @@ public class LLPractice {
 	}
 
 	private static void reverseLinkedList() {
-		List curr = RootNode;
-		List prev = null;
-		List next = null;
-
-		while (curr != null) {
-			next = curr.next;
-			curr.next = prev;
-			prev = curr;
-			curr = next;
-		}
-		RootNode = prev;
+		
 	}
 
 	private static void removeDuplicates() {

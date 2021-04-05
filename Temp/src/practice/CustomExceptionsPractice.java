@@ -2,46 +2,49 @@ package practice;
 
 class PersonPractice {
 	int age;
+	
+
+	public PersonPractice(int age) throws TooHighAgeException, TooLessAgeException {
+		super();
+		this.age = age;
+		if (age>30) {
+			throw new TooHighAgeException("high");
+		}
+		if (age<18) {
+			throw new TooLessAgeException("less");
+		}
+	}
+
+	public int getAge() {
+		return age;
+	}
 
 	public void setAge(int age) {
 		this.age = age;
 	}
-
-	public PersonPractice(int age) throws MoreAgeException, LowAgeException {
-		super();
-		if (age > 40) {
-			throw new MoreAgeException("Too Old");
-		}
-		if (age < 18) {
-			throw new LowAgeException("Too Young");
-		}
-		this.age = age;
-	}
 }
+ class TooHighAgeException extends RuntimeException
+ {
+	 TooHighAgeException(String s){
+		 super(s);
+	 }
+ }
+ 
+ class TooLessAgeException extends RuntimeException
+ {
+	 TooLessAgeException(String s){
+		 super(s);
+	 }
+ }
 
-class MoreAgeException extends Exception {
-	public MoreAgeException(String string) {
-		super(string);
-	}
-}
-
-class LowAgeException extends Exception {
-	public LowAgeException(String string) {
-		super(string);
-	}
-}
 
 public class CustomExceptionsPractice {
-	public static void main(String[] args) {
-		try {
-			PersonPractice p = new PersonPractice(0);
-		} catch (MoreAgeException | LowAgeException e) {
-			System.out.println(e.getMessage());
-		}
-		try {
-			PersonPractice p1 = new PersonPractice(70);
-		} catch (MoreAgeException | LowAgeException e) {
-			System.out.println(e.getMessage());
-		}
+	public static void main(String[] args)  {
+//		try {
+			PersonPractice p1=new PersonPractice(17);
+//		} catch (TooHighAgeException e) {
+			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 }

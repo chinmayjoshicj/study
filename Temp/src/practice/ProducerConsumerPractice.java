@@ -4,8 +4,10 @@ import java.util.ArrayList;
 
 public class ProducerConsumerPractice {
 	public static void main(String args[]) {
+
 		Executor e = new Executor();
 		Thread t1 = new Thread(new Runnable() {
+
 			@Override
 			public void run() {
 				try {
@@ -16,7 +18,9 @@ public class ProducerConsumerPractice {
 				}
 			}
 		});
+
 		Thread t2 = new Thread(new Runnable() {
+
 			@Override
 			public void run() {
 				try {
@@ -32,20 +36,22 @@ public class ProducerConsumerPractice {
 	}
 }
 
-class Executor {
-	ArrayList<Integer> list = new ArrayList<>();
+class Executor extends Thread {
+	ArrayList<Number> list = new ArrayList<Number>();
 	int count = 0;
+	int capacity = 2;
 
 	public void producer() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				while (list.size() > 6) {
+				if(list.size()<capacity) {
+					System.out.println("Adding "+count);
+					list.add(count++);
+					sleep(1000);
+				}
+				else {
 					wait();
 				}
-				System.out.println("Adding " + count);
-				list.add(count++);
-				Thread.sleep(1000);
-				notify();
 			}
 		}
 	}
@@ -53,14 +59,15 @@ class Executor {
 	public void consume() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				while (list.size() <= 0) {
-					wait();
+				if(list.size()>0) {
+					System.out.println("removing "+ list.get(list.size() - 1));
+					list.remove(list.size()-1);
+					count--;
+					notify();
+					sleep(1000);
 				}
-				System.out.println("Removing " + --count);
-				list.remove(list.size() - 1);
-				Thread.sleep(1000);
-				notify();
 			}
 		}
 	}
+
 }

@@ -4,8 +4,8 @@ public class CeilAndFloor
 {
 	public static void main(String[] args)
 	{
-		int arr[]={2,4,6,10,11,12,13,17};
-		findCeilFloor(arr,3,0,arr.length-1);
+		int arr[]={3,4,6,10,11,12,13,17};
+		findCeilFloor(arr,2,0,arr.length-1);
 	}
 	private static void findCeilFloor(int[] arr,int num, int start, int end) 
 	{
