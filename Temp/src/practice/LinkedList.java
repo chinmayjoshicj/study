@@ -9,7 +9,7 @@ class List {
 	public List(int data) {
 		super();
 		this.data = data;
-		this.next = null;
+		this.next = null;	
 	}
 }
 

@@ -10,7 +10,7 @@ public class LLPractice {
 		System.out.println("Middle Element is: ");
 		findMiddleElement();
 		System.out.println();
-		System.out.print("After Duplicate Removal :");
+		System.out.print("After Duplic	ate Removal :");
 		removeDuplicates();
 
 		printLL();
@@ -23,7 +23,9 @@ public class LLPractice {
 	private static void CreateLL() {
 		addElement(20);
 		addElement(30);
+		addElement(30);
 		addElement(40);
+		addElement(50);
 		addElement(50);
 		addElement(60);
 		addElement(70);
@@ -38,29 +40,45 @@ public class LLPractice {
 	}
 
 	private static void reverseLinkedList() {
+		List curr=RootNode;
+		List next=null;
+		List prev=null;
+		
+		while(curr!=null) {
+			next=curr.next;
+			curr.next=prev;
+			prev=curr;
+			curr=next;
+		}
+		RootNode=prev;
 		
 	}
 
 	private static void removeDuplicates() {
-
+		if(RootNode==null) {
+			return;
+		}
+		List temp=RootNode;
+		while (temp!=null) {
+			if(temp.next!=null && temp.data==temp.next.data) {
+				temp.next=temp.next.next;
+			}
+			temp=temp.next;
+		}
 	}
 
 	private static void findMiddleElement() {
-		int len = 0;
-		List temp = RootNode;
-		while (temp != null) {
-			len++;
-			temp = temp.next;
-		}
-		len = len / 2;
-		temp = RootNode;
-		while (len != 0) {
-			len--;
-			temp = temp.next;
-			if (len == 0) {
-				System.out.print(temp.data);
+		List slow=RootNode;
+		List fast=RootNode.next;
+		
+		while (fast!=null && slow!=null) {
+			slow=slow.next;
+			
+			if(fast.next!=null) {
+				fast=fast.next.next;
 			}
 		}
+		System.out.println(slow.data);
 	}
 
 	private static void printLL() {

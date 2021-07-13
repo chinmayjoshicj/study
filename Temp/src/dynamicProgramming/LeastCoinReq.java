@@ -1,10 +1,10 @@
 	package dynamicProgramming;
 
-public class MakingChangeProblem {
+public class LeastCoinReq {
 
 	public static void main(String[] args) {
 		int coins[]= {1,2,5};
-		int amount= 11;
+		int amount= 5;
 		
 		System.out.println(leastCoint(coins,amount));
 

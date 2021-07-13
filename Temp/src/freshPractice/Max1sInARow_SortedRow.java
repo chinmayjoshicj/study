@@ -1,11 +1,11 @@
-package freshPractice;
+	package freshPractice;
 
 public class Max1sInARow_SortedRow {
 
 	public static void main(String[] args) {
 		int arr[][] = { { 0, 0, 0, 0 },
 						{ 0, 0, 1, 1 }, 
-						{ 0, 0, 0, 1 }, 
+						{ 1, 1, 1, 1 }, 
 						{ 0, 1, 1, 1 } 
 					  };
 		int max_1_row_Index=0;
@@ -13,7 +13,7 @@ public class Max1sInARow_SortedRow {
 		
 		for (int i = 0; i < arr.length; i++) {
 			if(arr[0][i]==1) {
-				col_first_1_found=i;
+					col_first_1_found=i;
 				break;
 			}
 		}
@@ -41,7 +41,5 @@ public class Max1sInARow_SortedRow {
 			}
 		}
 		System.out.println("Row "+max_1_row_Index);
-		
-		
 	}
 }

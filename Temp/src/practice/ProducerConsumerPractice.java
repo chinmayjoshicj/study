@@ -2,16 +2,22 @@ package practice;
 
 import java.util.ArrayList;
 
+import javax.swing.plaf.SliderUI;
+
 public class ProducerConsumerPractice {
+
+	ArrayList<Integer> ll = new ArrayList<Integer>();
+	int count = 0;
+	static ProducerConsumerPractice pc= new ProducerConsumerPractice();
 	public static void main(String args[]) {
 
-		Executor e = new Executor();
 		Thread t1 = new Thread(new Runnable() {
 
 			@Override
 			public void run() {
+				// TODO Auto-generated method stub
 				try {
-					e.producer();
+					pc.produce();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -23,8 +29,9 @@ public class ProducerConsumerPractice {
 
 			@Override
 			public void run() {
+				// TODO Auto-generated method stub
 				try {
-					e.consume();
+					pc.consume();
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -34,40 +41,36 @@ public class ProducerConsumerPractice {
 		t1.start();
 		t2.start();
 	}
-}
 
-class Executor extends Thread {
-	ArrayList<Number> list = new ArrayList<Number>();
-	int count = 0;
-	int capacity = 2;
-
-	public void producer() throws InterruptedException {
+	public void produce() throws InterruptedException {
 		while (true) {
 			synchronized (this) {
-				if(list.size()<capacity) {
-					System.out.println("Adding "+count);
-					list.add(count++);
-					sleep(1000);
-				}
-				else {
+				if(ll.size()==5) {
 					wait();
 				}
-			}
-		}
-	}
-
-	public void consume() throws InterruptedException {
-		while (true) {
-			synchronized (this) {
-				if(list.size()>0) {
-					System.out.println("removing "+ list.get(list.size() - 1));
-					list.remove(list.size()-1);
-					count--;
+				else {
+					System.out.println("Producing "+count);
+					ll.add(count++);
+					Thread.sleep(1000);
 					notify();
-					sleep(1000);
 				}
 			}
 		}
 	}
 
+	public void consume() throws InterruptedException{
+		while (true) {
+			synchronized (this) {
+				if(ll.size()==0) {
+					wait();
+				}else {
+					System.out.println("Removing "+ll.get(ll.size()-1));
+					ll.remove(ll.size()-1);
+					count--;
+					Thread.sleep(1000);
+					notify();
+				}
+			}
+		}
+	}
 }

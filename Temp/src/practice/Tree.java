@@ -15,11 +15,11 @@ class TreeNode {
 	int data;
 	int hd;
 	TreeNode right = null;
-	TreeNode nextRight = null;
+//	TreeNode nextRight = null;
 
 	public TreeNode(int data, int i) {
 		this.data = data;
-		this.hd = i;
+		this.hd = i;	
 	}
 
 	public TreeNode(int data) {
@@ -295,27 +295,27 @@ public class Tree {
 	}
 
 	private static void ConnectNodesAtSameLevel(TreeNode rootNode) {
-		Stack<TreeNode> currLevel = new Stack<>();
-		Stack<TreeNode> nextLevel = new Stack<>();
-
-		currLevel.push(rootNode);
-		while (!currLevel.isEmpty()) {
-			TreeNode temp = currLevel.pop();
-
-			if (temp.left != null) {
-				nextLevel.push(temp.left);
-			}
-			if (temp.right != null) {
-				nextLevel.push(temp.right);
-			}
-			if (currLevel.isEmpty()) {
-				TreeNode t = nextLevel.pop();
-				while (!nextLevel.isEmpty()) {
-					t.nextRight = nextLevel.peek();
-					t = nextLevel.pop();
-				}
-			}
-		}
+//		Stack<TreeNode> currLevel = new Stack<>();
+//		Stack<TreeNode> nextLevel = new Stack<>();
+//
+//		currLevel.push(rootNode);
+//		while (!currLevel.isEmpty()) {
+//			TreeNode temp = currLevel.pop();
+//
+//			if (temp.left != null) {
+//				nextLevel.push(temp.left);
+//			}
+//			if (temp.right != null) {
+//				nextLevel.push(temp.right);
+//			}
+//			if (currLevel.isEmpty()) {
+//				TreeNode t = nextLevel.pop();
+//				while (!nextLevel.isEmpty()) {
+//					t.nextRight = nextLevel.peek();
+//					t = nextLevel.pop();
+//				}
+//			}
+//		}
 	}
 
 	private static boolean pathSumK(TreeNode rootNode, int k) {

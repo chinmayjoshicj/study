@@ -24,9 +24,9 @@ import java.util.TreeMap;
 		this.hd=i;
 	}
 	public TreeNode(int data) 
-	{
+	{	
 		this.data=data;
-	}
+	}	
 }*/
 
 public class TreePractice {
@@ -45,6 +45,7 @@ public class TreePractice {
 	static Map<Integer, TreeNode> leftViewMap = new HashMap<Integer, TreeNode>();
 	static HashSet<TreeNode> leftViewHashSet = new HashSet<TreeNode>();
 	static Map<Integer, TreeNode> bottomViewMap = new HashMap<Integer, TreeNode>();
+	static Stack<Integer> s = new Stack<Integer>();
 
 	public static void main(String[] args) {
 		root = new TreeNode(20, 0);
@@ -52,9 +53,10 @@ public class TreePractice {
 		root.left.left = new TreeNode(3, -2);
 
 		root.right = new TreeNode(22, 1);
+//		root.right.right = new TreeNode(8, 2);// not a BST used for printAllRootToLeafPathsEqualToK
 		// root.right.right=new TreeNode(29,1);
 
-		root.left.right = new TreeNode(12, 0);
+		root.left.right = new TreeNode(12, 0);	
 		root.left.right.right = new TreeNode(14, 1);
 
 		root.left.right.left = new TreeNode(10, -1);
@@ -192,8 +194,8 @@ public class TreePractice {
 //		System.out.println();
 //		System.out.println();
 		int paths[] = new int[100];
-		System.out.println("Root To leaf paths are: ");
-		printAllRootToLeafPaths(root, paths, 0);
+		System.out.println("Root To leaf paths are equal to sum k");
+		printAllRootToLeafPathsEqualToK(root, 50);
 		System.out.println("Root to Leaf Path Sum: " + findRootToLeafSumPath(root, 31));
 //		System.out.println();
 //		System.out.println();
@@ -202,184 +204,91 @@ public class TreePractice {
 	}
 
 	private static void BoundryNodesTraversal(TreeNode rootNode) {
-		if(root==null) {
-			return;
-		}
-		printRightBoundry(root);
-		System.out.println();
-		printBottomBoundry(root);
-		System.out.println();
-		printLeftBoundry(root);
-		System.out.println();
-		System.out.println();
-		
-//				TreeNode temp = rootNode;
-//				while (temp.left != null && temp.right != null) {
-//					System.out.print(temp.data + " ");
-//					temp = temp.right;
-//				}
-//				printBottomBoundry(rootNode);
-//				temp = rootNode;
-//				while (temp.left != null && temp.right != null) {
-//					System.out.print(temp.data + " ");
-//					temp = temp.left;
-//				}
-//				System.out.println();
+
 	}
 
 	private static void printBottomBoundry(TreeNode root) {
-		if(root==null)
-		{
-			return;
-		}
-		if(root.left==null && root.right==null) {
-			System.out.print(root.data+" ");
-		}
-		printBottomBoundry(root.right);
-		printBottomBoundry(root.left);
+
 	}
 
 	private static void printLeftBoundry(TreeNode root) {
-		if(root==null)
-		{
-			return;
-		}
-		
-		printLeftBoundry(root.left);
-		
-		if(root.left!=null && root.right!=null && TreePractice.root!=root) {
-			System.out.print(root.data+" ");
-		}
+
 	}
 
 	private static void printRightBoundry(TreeNode root) {
-		if(root==null) {
-			return;
-		}
-		if(root.left==null && root.nextRight==null) {
-			return;
-		}
-		System.out.print(root.data+" ");
+
 	}
 
 	private static void spiralOrderTraversal(TreeNode root) {
-		if(root==null) {
-			return;
-		}
-		currLevel.add(root);
-		while (!currLevel.isEmpty()) {
-			TreeNode pop = currLevel.pop();
-			System.out.print(pop.data+" ");
-			if(pop!=null) {
-				if(leftToRight) {
-					if(pop.left!=null) {
-						nextLevel.add(pop.left);
-					}
-					if(pop.right!=null) {
-						nextLevel.add(pop.right);
-					}
-					
-				}
-				else {
-					if(pop.right!=null) {
-						nextLevel.add(pop.right);
-					}
-					if(pop.left!=null) {
-						nextLevel.add(pop.left);
-					}
-				}
-			}
-			if(currLevel.isEmpty()) {
-				leftToRight=!leftToRight;
-				Stack<TreeNode> s=nextLevel;
-				nextLevel=currLevel;
-				currLevel=s;
-			}
-		}
+
 	}
 
 	private static void findMin(TreeNode root) {
-		if(root==null) {
+		if (root == null) {
 			return;
 		}
-		if(root.data<min) {
-			min=root.data;
-		}
+		min = Math.min(root.data, min);
 		findMin(root.left);
 		findMin(root.right);
 	}
 
 	private static void topView(TreeNode root) {
-		if(root==null) {
-			return;
-		}
-		Queue<TreeNode> q= new LinkedList<TreeNode>();
-		q.add(root);
-		while (!q.isEmpty()) {
-			TreeNode peek = q.poll();
-			if(!topViewMap.containsKey(peek.hd)) {
-				topViewMap.put(peek.hd, peek);
-			}
-			if(peek.left!=null) {
-				q.add(peek.left);
-			}
-			if(peek.right!=null) {
-				q.add(peek.right);
-			}
-		}
+
 	}
 
 	private static int HeightOfaTree(TreeNode root) {
-		
-		if(root==null) {
+		if (root == null) {
 			return 0;
 		}
-		int lh=HeightOfaTree(root.left);
-		int rh=HeightOfaTree(root.right);
-//		System.out.println("left height for "+root.data+" "+lh);
-//		System.out.println("right height for "+root.data+" "+rh);
-		return Integer.max(lh+1,rh+1);
-															
+		int lh = HeightOfaTree(root.left) + 1;
+		int rh = HeightOfaTree(root.right) + 1;
+		return Math.max(lh, rh);
 	}
 
 	private static boolean checkTreeBST(TreeNode rootNode, TreeNode l, TreeNode r) {
-		
 		if (rootNode == null) {
 			return true;
 		}
-		if (l != null && rootNode.data <= l.data) 
-	        return false; 
-		
-		 if (r != null && rootNode.data >= r.data) 
-		        return false; 
-		return checkTreeBST(rootNode.left, l, rootNode)
-				&& checkTreeBST(rootNode.right, rootNode,r);
+		if (l != null && rootNode.data <= l.data) {
+			return false;
+		}
+		if (r != null && rootNode.data >= r.data) {
+			return false;
+		}
+
+		return checkTreeBST(rootNode.left, l, rootNode) && checkTreeBST(rootNode.right, r, rootNode);
 	}
 
 	private static void levelOrderTraversal(TreeNode root) {
 		if(root==null) {
 			return;
 		}
-		Queue<TreeNode> q= new LinkedList<TreeNode>();
-		q.add(root);
-		while (!q.isEmpty()) {
-			TreeNode pop=q.poll();
+		Stack<TreeNode> s1= new Stack<TreeNode>();
+		Stack<TreeNode> s2= new Stack<TreeNode>();
+		s1.push(root);
+		while (!s1.isEmpty()) {
+			TreeNode pop = s1.pop();
 			System.out.print(pop.data+" ");
-			if(pop!=null && pop.left!=null) {
-				q.add(pop.left);
+			if(pop.left!=null){
+				s2.push(pop.left);
 			}
-			if(pop!=null && pop.right!=null) {
-				q.add(pop.right);
+			if(pop.right!=null){
+				s2.push(pop.right);
 			}
-		}		
+			
+			if(s1.isEmpty()) {
+				Stack<TreeNode> temp=s1;
+				s1=s2;
+				s2=temp;				
+			}
+		}
 	}
 
 	private static void levelOrderWithoutStackQueue(TreeNode root) {
 		if(root==null) {
 			return;
 		}
-		int height=HeightOfaTree(root);
-		for (int i = 0; i <=height; i++) {
+		for (int i = 1; i <=height; i++) {
 			levelOrderUtils(root, i);
 		}
 	}
@@ -388,28 +297,26 @@ public class TreePractice {
 		if(root==null) {
 			return;
 		}
+		
 		if(level==1) {
 			System.out.print(root.data+" ");
 		}
-		else {
-			levelOrderUtils(root.left, level-1);
-			levelOrderUtils(root.right, level-1);
-		}
+		levelOrderUtils(root.left, level-1);
+		levelOrderUtils(root.right, level-1);
 	}
 
 	private static int Diameter(TreeNode root) {
 		if(root==null) {
 			return 0;
 		}
-		int lh=HeightOfaTree(root.left);
-		int rh=HeightOfaTree(root.right);
+		int lh=HeightOfaTree(root.left)+1;
+		int rh=HeightOfaTree(root.right)+1;
 		
-		return Integer.max(lh+rh+1, Integer.max(Diameter(root.left), Diameter(root.right)));
+		return Math.max(lh+rh, Math.max(Diameter(root.left), Diameter(root.right)));
 	}
-		
 
 	private static void LeftViewMy(TreeNode root) {
-		
+
 	}
 
 	private static void leftViewUtils(TreeNode root, int level) {
@@ -429,66 +336,19 @@ public class TreePractice {
 	}
 
 	private static void kDistanceNodesFromRoot(TreeNode root, int dist) {
-		if(root==null) {
-			return;
-		}
-		if(dist==0) {
-			System.out.print(root.data+" ");
-		}
-		kDistanceNodesFromRoot(root.left, dist-1);
-		kDistanceNodesFromRoot(root.right, dist-1);
+
 	}
 
-	private static void printAllRootToLeafPaths(TreeNode root, int[] paths, int sum) {
-		if(root==null) {
-			return;
-		}
-		if(root.left ==null && root.right==null) {
-			System.out.print(sum+root.data+" ");
-			System.out.println();
-			return;
-		}
-		printAllRootToLeafPaths(root.left, paths, sum+root.data);		
-		printAllRootToLeafPaths(root.right, paths, sum+root.data);	
+	private static void printAllRootToLeafPathsEqualToK(TreeNode root, int sum) {
+
 	}
 
 	private static boolean findRootToLeafSumPath(TreeNode rootNode, int sum) {
-		if(root==null) {
-			return false;
-		}
-		if(sum==0) {
-			return true;
-		}
-		sum=sum-rootNode.data;
-		return findRootToLeafSumPath(rootNode.left, sum) ||
-		findRootToLeafSumPath(rootNode.right, sum);
+		return leftToRight;
 	}
 
 	private static int maximumWidthOfBinaryTree(TreeNode root) {
-		if(root==null) {
-			return 0;
-		}
-		int max=0;
-		currLevel.add(root);
-		
-		while (!currLevel.isEmpty()) {
-			TreeNode poll = currLevel.pop();
-			if(!(poll.left==null)) {
-				nextLevel.add(poll.left);
-			}
-			if(!(poll.right==null)) {
-				nextLevel.add(poll.right);
-			}
-			if(currLevel.isEmpty()) {
-				if(max<nextLevel.size()) {
-					max=nextLevel.size();					
-				}
-				Stack<TreeNode> s=nextLevel;
-				nextLevel=currLevel;
-				currLevel=s;
-			}
-		}
-		return max;
+		return height;
 	}
 
 }

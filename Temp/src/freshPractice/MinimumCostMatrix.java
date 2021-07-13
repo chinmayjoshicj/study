@@ -12,10 +12,10 @@ public class MinimumCostMatrix {
 	System.out.println(getMinimumCostFromMatrix(arr,2,2));
 		
 		
-	}
+	}	
 	static int getMinimumCostFromMatrix(int arr[][],int m, int n) {
 		
-		if(m<0 || n<0) {
+		if(m<0 || n<0) {	
 			return Integer.MAX_VALUE;
 		}
 		else if(m==0 && n==0){
