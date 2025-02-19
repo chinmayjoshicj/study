@@ -1,6 +1,4 @@
-package LeetCode;
-
-import java.math.BigInteger;
+package leetCode;
 
 class ListNode {
 	int val;
