@@ -10,34 +10,23 @@ public class NoOfPlatformsPractice {
 	public static void main(String[] args) {
 		Arrays.sort(arr);
 		Arrays.sort(dept);
-		
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(arr[i]+" ");
-		}
-		System.out.println();
-		for (int i = 0; i < arr.length; i++) {
-			System.out.print(dept[i]+" ");
-		}
-		System.out.println();
-		int iArr=1;
-		int jDept=0;
-		int noOfPlatForms=1;
-		int maxPlatForms=1;
-		
-		while (iArr<arr.length && jDept<arr.length) {
-			if(arr[iArr]>dept[jDept]) {
-				jDept++;
-				noOfPlatForms--;
-				System.out.println("minus "+noOfPlatForms);
+
+		int arrPt=0;
+		int deptPt=0;
+		int maxPlatForms = 0;
+		int currPlatforms=0;
+		while (arrPt<=arr.length-1 && deptPt<=arr.length-1) {
+			if(arr[arrPt]<=dept[deptPt]) {
+				arrPt++;
+				currPlatforms++;
 			}
-			else {
-				iArr++;
-				noOfPlatForms++;
-				System.out.println("added "+noOfPlatForms);
-				maxPlatForms=Math.max(noOfPlatForms, maxPlatForms);
+			else if(arr[arrPt]>=dept[deptPt]) {
+				currPlatforms--;
+				deptPt++;
 			}
-		}	
+			maxPlatForms=Math.max(maxPlatForms, currPlatforms);
+		}
 		
-		System.out.println("Max Platforms "+maxPlatForms);
+		System.out.println(maxPlatForms);
 	}
 }

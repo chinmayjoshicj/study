@@ -1,7 +1,5 @@
 package freshPractice;
 
-import java.util.Arrays;
-
 public class PrintLargestNumWithNDigitsAndSumS {
 
 	static int max = 0;
